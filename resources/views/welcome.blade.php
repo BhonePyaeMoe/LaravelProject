@@ -11,35 +11,30 @@
 
     @include('navigation')
 
-    <div class="container">
-        <header>
-            <h1>Welcome to Our Consultancy Company</h1>
-            <p>Your success is our priority.</p>
-            <button class="cta-button">Get Started</button>
-        </header>
+    <div class="first_container">
 
-        <section>
-            <h2>About Us</h2>
-            <p>We provide top-notch consultancy services to help your business grow and succeed.</p>
-        </section>
+        <div class="home_background"></div>
 
-        <section>
-            <h2>Our Services</h2>
-            <ul>
-                <li>Business Strategy</li>
-                <li>Market Analysis</li>
-                <li>Financial Planning</li>
-                <li>Operational Improvement</li>
-            </ul>
-        </section>
+        <div class="Home_display">
+            <img src="{{ asset('Images/Home.jpg') }}" alt="Consultancy Company Logo">
+            
+            
 
-        <section>
-            <h2>Contact Us</h2>
-            <p>Email: info@consultancy.com</p>
-            <p>Phone: (123) 456-7890</p>
-            <button class="cta-button">Contact Us</button>
-        </section>
+            <div class="Home_text">
+                <h1>Welcome to NovaBright</h1>
+                <p>Your success is our priority. Let us help you achieve your business goals with our expert consultancy services.</p>
+                
+            </div>
+        </div>
+
     </div>
+
+    <div class="second_container">
+
+    </div>
+
+        
+
 
     <footer>
         <p>&copy; 2023 Consultancy Company. All rights reserved.</p>

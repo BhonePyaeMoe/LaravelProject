@@ -8,24 +8,28 @@
 </head>
 <body>
     <nav>
+        <div class="logo">
+            <a href="{{ url('/') }}"><img src="{{ asset('Images/Logo.png') }}" alt="NovaBright Logo"></a>
+        </div>
+
         <ul>
             <li><a href="{{ url('/') }}">Home</a></li>
-            <li><a href="{{ url('/about') }}">About Us</a></li>
-            <li><a href="{{ url('/services') }}">Services</a></li>
-            <li><a href="{{ url('/contact') }}">Contact</a></li>
-            <li><a href="{{ url('/blog') }}">Blog</a></li>
+            <li><a href="{{ url('/about') }}">About</a></li>
+            <li><a href="{{ url('/universities') }}">Universities</a></li>
+            <li><a href="{{ url('/appointment') }}">Appointment</a></li>
         </ul>
-        <div class="menu-toggle">
-            <div></div>
-            <div></div>
-            <div></div>
+
+        <div class="menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div> 
         </div>
+
+        <a href="{{ url('/login') }}" class="Login_btn"> Login </a>
     </nav>
 
-    <main>
-        <!-- Your content goes here -->
-    </main>
 
-    <script src=" {{ asset('Navigation/navigation.js ') }}""></script>
+
+    <script src="{{ asset('Navigation/navigation.js') }}"></script>
 </body>
 </html>
