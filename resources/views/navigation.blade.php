@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('Navigation/navigation.css') }}">
 </head>
 <body>
-    <nav>
+    <nav class="desktop_nav">
         <div class="logo">
             <a href="{{ url('/') }}"><img src="{{ asset('Images/Logo.png') }}" alt="NovaBright Logo"></a>
         </div>
@@ -15,17 +15,30 @@
         <ul>
             <li><a href="{{ url('/') }}">Home</a></li>
             <li><a href="{{ url('/about') }}">About</a></li>
+            <li><a href="{{ url('/service') }}">Service</a></li>
             <li><a href="{{ url('/universities') }}">Universities</a></li>
             <li><a href="{{ url('/appointment') }}">Appointment</a></li>
         </ul>
 
-        <div class="menu">
+        <button class="menu">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div> 
-        </div>
+        </button>
 
         <a href="{{ url('/login') }}" class="Login_btn"> Login </a>
+    </nav>
+
+
+    <nav class="mobile_nav">
+        <ul>
+            <li><a href="{{ url('/') }}">Home</a></li>
+            <li><a href="{{ url('/about') }}">About</a></li>
+            <li><a href="{{ url('/service') }}">Service</a></li>
+            <li><a href="{{ url('/universities') }}">Universities</a></li>
+            <li><a href="{{ url('/appointment') }}">Appointment</a></li>
+            <li><a href="{{ url('/login') }}">Login</a></li>
+        </ul>
     </nav>
 
 
