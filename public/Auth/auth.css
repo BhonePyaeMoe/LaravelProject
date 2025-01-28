@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: fadein 2s;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.shader {
+    background-color: white;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    width: calc(100% - 400px);
+    height: calc(100% - 180px);
+    padding: 0px 30px;
+}
+.form_image {
+    background-color: #007bff;
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: left 1s;
+}
+.form_image > .signup_display {
+    display: none;
+}
+.form_image > .login_display,
+.form_image > .signup_display {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+.form_image > .login_display h2,
+.form_image > .signup_display h2 {
+    font-size: 50px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.form_image > .login_display p,
+.form_image > .signup_display p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin: 50px 130px 40px 130px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+.login_switch,
+.signup_switch {
+    letter-spacing: 1.5px;
+    padding: 17px 50px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    border-radius: 30px;
+    font-weight: bold;
+}
+.login_switch:hover,
+.signup_switch:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #007bff;
+}
+
+.login-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 45px;
+}
+
+.signup-side {
+    height: 100%;
+    padding: 45px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h2 {
+    letter-spacing: 1px;
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group:nth-child(6) {
+    margin-bottom: 45px;
+}
+
+.form-group label {
+    letter-spacing: 1px;
+    font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.form-control {
+    width: 100%;
+    padding: 13px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+.btn {
+    font-size: 19px;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

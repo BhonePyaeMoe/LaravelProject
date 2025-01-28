@@ -1,4 +1,3 @@
-<!-- filepath: /c:/xampp/htdocs/Consultancy/resources/views/welcome.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +17,9 @@
         <div class="Home_display">
             <img src="{{ asset('Images/Home.jpg') }}" alt="Consultancy Company Logo">
             
-            
-
             <div class="Home_text">
                 <h1>Welcome to NovaBright</h1>
                 <p>Your success is our priority. Let us help you achieve your business goals with our expert consultancy services.</p>
-                
             </div>
         </div>
 
@@ -32,9 +28,6 @@
     <div class="second_container">
 
     </div>
-
-        
-
 
     <footer>
         <p>&copy; 2023 Consultancy Company. All rights reserved.</p>
