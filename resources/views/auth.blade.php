@@ -20,6 +20,10 @@
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
+                <div class="form-check">
+                    <input type="checkbox" id="remember" name="remember"> 
+                    <label for="remember">Remember Me</label>
+                </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
@@ -34,10 +38,6 @@
                 <div class="form-group">
                     <label for="email">Email:</label>
                     <input type="email" id="signup-email" name="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="age">Age:</label>
-                    <input type="number" id="age" name="age" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">PhoneNumber:</label>

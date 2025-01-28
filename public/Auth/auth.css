@@ -2,11 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    animation: fadein 2s;
-}
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
 }
 
 @keyframes fadein {
@@ -24,6 +19,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f8f9fa;
+    animation: fadein 2s;
 }
 
 .shader {
@@ -33,7 +29,7 @@ body {
     overflow: hidden;
     display: flex;
     position: relative;
-    width: calc(100% - 400px);
+    width: calc(100% - 600px);
     height: calc(100% - 180px);
     padding: 0px 30px;
 }
@@ -95,16 +91,8 @@ body {
     color: #007bff;
 }
 
+.signup-side,
 .login-side {
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 45px;
-}
-
-.signup-side {
     height: 100%;
     padding: 45px;
     width: 50%;
@@ -143,7 +131,15 @@ h2 {
     border-radius: 4px;
     font-size: 18px;
 }
-
+.form-check {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    padding: 13px 10px;
+    font-size: 18px;
+    align-items: center;
+    margin-bottom: 20px;
+}
 .btn {
     font-size: 19px;
     width: 100%;
