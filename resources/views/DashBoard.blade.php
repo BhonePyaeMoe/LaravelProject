@@ -8,48 +8,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <div div class="container">
-    <!-- Dashboard/Sidebar -->
+    <div class="container">
         <aside class="sidebar">
-            <a href="{{ route('home') }}"><img src="{{ asset('Images/Logo.png') }}" alt="NovaBright Logo"></a>
-        <ul class="menu">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">More Tabs...</a></li>
-            <li><a href="#">Tab 1</a></li>
-            <li><a href="#">Tab 2</a></li>
-            <li><a href="#">Tab 3</a></li>
-            <li><a href="#">Tab 4</a></li>
-            <li><a href="#">Tab 5</a></li>
-        </ul>
+            <a href="{{ route('dashboard') }}"><img src="{{ asset('Images/Logo.png') }}" alt="NovaBright Logo"></a>
+            <ul class="menu">
+                
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-user"> </i> User </a></li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-business-time"></i> Schedule </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-handshake"></i> MeetingType </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-calendar"> </i> WorkDay </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-globe"></i> Country </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-building-columns"></i> Universities </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-user-tie"></i> Consultant </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-book"></i> Appointment </a> </li>
+                <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-graduation-cap"></i> Enrollment </a> </li>
+            </ul>
         </aside>
 
-    </div>
 
-        <div class="searchbar"> 
+        <div class="main">
+            <div class="topbar">
+                <div class="dashboard">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
 
-            <div class="dashboard">
-                <i class="fa-solid fa-bars"></i> 
+                <div class="searchbar">
+
+                    <div class="search">
+                        <input type="text" placeholder="Search here...">
+                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+
+                    <div class="logout">
+                        <a href="{{ route('login') }}"><i class="fa-solid fa-power-off"></i></a>
+                    </div>
+
+                </div>
             </div>
 
-            <div class="search">
-                <input type="text" placeholder="Search...">
-                <button> <i class="fa-solid fa-magnifying-glass"></i> </button>
-            </div>
-            <div class="logout">
-                <a href="{{ route('login') }}"><i class="fa-solid fa-power-off"></i></a>
+            <div class="main_content">
+                <h1>Dashboard</h1>
+                <p>Welcome to the Dashboard</p>
             </div>
         </div>
+    </div>
 
-        <main class="content">
-        <h1>Welcome to the Dashboard</h1>
-        <p>Here is your main content area...</p>
-        </main>
-
-
-
+    <script src="{{ asset('Staff/script.js') }}"></script>
 </body>
 </html>
