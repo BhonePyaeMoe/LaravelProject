@@ -18,7 +18,7 @@ return new class extends Migration
             $table->time('Appointment_StartTime');
             $table->time('Appointment_EndTime');
             $table->string('Appointment_Topic');
-            $table->text('Appointment_Note')->nullable();
+            $table->text('Appointment_Note')->nullable(); 
             $table->text('User_Information')->nullable();
             $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -172,3 +172,57 @@
 .menu_active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
+
+/*  Admin Navigation  */
+.sidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 0px;
+    height: 100vh;
+    width: 300px;
+    background-color: #f8faff;
+    overflow-y: auto;
+    z-index: 1;
+    transition: width 1s;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.sidebar > a {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s;
+}
+.sidebar a img {
+    width: 230px;
+}
+.admin_menu {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.admin_menu li a {
+    text-decoration: none;
+    padding: 40px;
+    display: block;
+    color: #333;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.admin_menu li a:hover {
+    background-color: #0b70fe;
+}
+.admin_menu li .fa {
+    padding-right: 10px;
+}
