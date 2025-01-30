@@ -12,28 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->id('User_ID'); // Primary Key
+            $table->string('User_Name');
+            $table->string('User_Email')->unique();
+            $table->integer('User_Age');
+            $table->string('User_Phone');
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+        Schema::create('user_types', function (Blueprint $table) {
+            $table->id('UserType_ID'); // Primary Key
+            $table->unsignedBigInteger('User_ID'); // Foreign Key
+            $table->string('TypeName');
+            $table->timestamps();
 
-        Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->index();
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
+            $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade'); // Foreign Key Constraint
         });
     }
 
@@ -42,8 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('user_types');
         Schema::dropIfExists('users');
-        Schema::dropIfExists('password_reset_tokens');
-        Schema::dropIfExists('sessions');
     }
 };
