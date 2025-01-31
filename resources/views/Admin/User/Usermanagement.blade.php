@@ -15,13 +15,17 @@
 
     <div class="container">
         <div class="main">
-            <h1>User Management</h1>
+
             
+            <div class="user_search">
             <form action="{{ route('usermanagement') }}" method="GET" style="display: flex; gap: 10px;">
                 <input type="text" name="search" placeholder="Search users..." value="{{ request('search') }}">
                 <button type="submit">Search</button>
                 <a href="{{ route('usermanagement') }}" class="refresh-button">Refresh</a>
             </form>
+            </div>  
+
+            <h1>User Management</h1>
 
             <table>
                 <thead>
@@ -43,7 +47,7 @@
                             <td>{{ $user->User_Age }}</td>
                             <td>{{ $user->User_Phone }}</td>
                             <td>
-                                <a href="{{ route('user.edit', $user->User_ID) }}" class="btn btn-primary">Edit</a>
+                                <a href="{{ route('user.edit', $user->User_ID) }}" class="btn btn-primary">Update</a>
                                 <form action="{{ route('user.destroy', $user->User_ID) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
@@ -54,6 +58,21 @@
                     @endforeach
                 </tbody>
             </table>
+
+
+           <div class="add-user">
+                <h2>Add New User</h2>
+                <form method="POST" style="display: flex; flex-direction: column; gap: 10px;">
+                    @csrf
+                    <input type="text" name="User_Name" placeholder="User Name" required>
+                    <input type="email" name="User_Email" placeholder="User Email" required>
+                    <input type="number" name="User_Age" placeholder="User Age" required>
+                    <input type="text" name="User_Phone" placeholder="User Phone" required>
+                    <button type="submit" class="btn btn-success">Add User</button>
+                </form>
+            </div>
+                
+
         </div>
     </div>
 </body>
