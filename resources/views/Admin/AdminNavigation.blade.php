@@ -11,13 +11,13 @@
 <body>
 
     <aside class="sidebar">
-        <a href="{{ route('dashboard') }}"><img src="{{ asset('Images/Logo.png') }}" alt="NovaBright Logo"></a>
+        <a href="{{ route('dashboard') }}"><img src="{{ asset('Images/Logo2.png') }}" alt="NovaBright Logo"></a>
         <ul class="admin_menu">
             <li><a href="{{ route('usermanagement') }}"> <i class="fa fa-regular fa-user"> </i> User </a></li>
             <li><a href="{{ route('schedulemanagement') }}"> <i class="fa fa-solid fa-business-time"></i> Schedule </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-handshake"></i> MeetingType </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-calendar"> </i> WorkDay </a> </li>
-            <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-globe"></i> Country </a> </li>
+            <li><a href="{{ route('countrymanagement') }}"> <i class="fa fa-solid fa-globe"></i> Country </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-building-columns"></i> Universities </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-user-tie"></i> Consultant </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-book"></i> Appointment </a> </li>

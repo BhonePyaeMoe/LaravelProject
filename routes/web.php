@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CountryController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,11 +33,19 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/usermanagement', [UserController::class, 'index'])->name('usermanagement');
+Route::post('/usermanagement/store', [UserController::class, 'store'])->name('user.store');
 Route::get('/usermanagement/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/usermanagement/update/{id}', [UserController::class, 'update'])->name('user.update');
 Route::delete('/usermanagement/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
+Route::get('/countrymanagement', [CountryController::class, 'index'])->name('countrymanagement');
+Route::post('/country/store', [CountryController::class, 'store'])->name('country.store');
+Route::get('/country/edit/{id}', [CountryController::class, 'edit'])->name('country.edit');
+Route::post('/country/update/{id}', [CountryController::class, 'update'])->name('country.update');
+Route::delete('/country/delete/{id}', [CountryController::class, 'destroy'])->name('country.destroy');
+
+
+
 Route::get('/schedulemanagement', function () {
     return view('Admin.Schedulemanagement');
 })->name('schedulemanagement');
-

@@ -11,37 +11,36 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('queue')->index();
-            $table->longText('payload');
-            $table->unsignedTinyInteger('attempts');
-            $table->unsignedInteger('reserved_at')->nullable();
-            $table->unsignedInteger('available_at');
-            $table->unsignedInteger('created_at');
+        Schema::create('consultants', function (Blueprint $table) {
+            $table->id('Consultant_ID'); // Primary Key
+            $table->string('Consultant_Name');
+            $table->string('Consultant_Email');
+            $table->timestamps();
         });
 
-        Schema::create('job_batches', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->string('name');
-            $table->integer('total_jobs');
-            $table->integer('pending_jobs');
-            $table->integer('failed_jobs');
-            $table->longText('failed_job_ids');
-            $table->mediumText('options')->nullable();
-            $table->integer('cancelled_at')->nullable();
-            $table->integer('created_at');
-            $table->integer('finished_at')->nullable();
+        Schema::create('countries', function (Blueprint $table) {
+            $table->id('Country_ID'); // Primary Key
+            $table->string('Country_Name');
+            $table->timestamps();
         });
 
-        Schema::create('failed_jobs', function (Blueprint $table) {
-            $table->id();
-            $table->string('uuid')->unique();
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+        Schema::create('consultingcountries', function (Blueprint $table) {
+            $table->id('Consultingcountry_ID'); // Primary Key
+            $table->unsignedBigInteger('Consultant_ID');
+            $table->unsignedBigInteger('Country_ID');
+            $table->timestamps();
+
+            $table->foreign('Consultant_ID')->references('Consultant_ID')->on('consultants')->onDelete('cascade');
+            $table->foreign('Country_ID')->references('Country_ID')->on('countries')->onDelete('cascade');
+        });
+
+        Schema::create('universities', function (Blueprint $table) {
+            $table->id('University_ID');
+            $table->string('University_Name');
+            $table->unsignedBigInteger('Country_ID');
+            $table->timestamps();
+
+            $table->foreign('Country_ID')->references('Country_ID')->on('countries')->onDelete('cascade');
         });
     }
 
@@ -50,8 +49,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
-        Schema::dropIfExists('job_batches');
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('universities');
+        Schema::dropIfExists('consultingcountries');
+        Schema::dropIfExists('countries');
+        Schema::dropIfExists('consultants');
     }
 };

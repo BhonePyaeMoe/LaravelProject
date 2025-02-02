@@ -1,24 +1,23 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: Arial, sans-serif;
     height: 100vh;
     overflow: hidden;
     background-color: #f6f6f6;
 }
+
 .container {
     display: flex;
     width: 100%;
+    height: 100vh; /* Ensure the container takes full height */
 }
+
 .main {
     width: 100%;
     margin-left: 300px;
     transition: margin-left 1s;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
+
 .topbar {
     width: 100%;
     display: flex;
@@ -27,15 +26,15 @@ body {
     padding: 20px 20px;
     background-color: #ffffff;
 }
+
 .dashboard {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 7px;
-    left: 30px;
-    font-size: 20px;
 }
+
 .dashboard span {
     background-color: black;
     height: 3px;
@@ -44,13 +43,16 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
 .searchbar {
     display: flex;
 }
+
 .search {
     position: relative;
     display: flex;
 }
+
 .search input[type="text"] {
     background-color: #f8faff;
     padding: 15px 10px;
@@ -59,9 +61,11 @@ body {
     border-radius: 10px;
     font-size: 16px;
 }
+
 .search input[type="text"]::placeholder {
     color: #95979d;
 }
+
 .search button {
     position: absolute;
     top: 14px;
@@ -72,6 +76,7 @@ body {
     cursor: pointer;
     font-size: 20px;
 }
+
 .logout {
     display: flex;
     align-items: center;
@@ -81,14 +86,17 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+
 .logout a i {
     margin-right: 5px;
     font-size: 30px;
 }
+
 .logout a {
     text-decoration: none;
     color: #333;
 }
+
 .logout a:hover {
     color: #0b70fe;
 }
@@ -97,37 +105,58 @@ body {
     padding: 30px;
 }
 
+.table_display {
+    padding: 40px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 18px;
-    text-align: center;
+    text-align: left;
+    background-color: #fff;
 }
 
 table th,
 table td {
-    padding: 15px 0px;
+    padding: 25px;
     border-bottom: 1px solid #ddd;
+    text-align: center;
 }
+
+table th {
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+table td button {
+    margin-left: 10px;
+}
+
 table td a,
 table td button {
-    padding: 10px 20px;
+    padding: 14px 20px;
     background-color: #0b70fe;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     text-decoration: none;
 }
-table th {
-    background-color: #f2f2f2;
+
+table td button {
+    background-color: #dc3545;
 }
 
-table tr:hover {
-    background-color: #f5f5f5;
+table td a:hover,
+table td button:hover {
+    opacity: 0.8;
 }
+
 .user_search {
     padding: 20px;
     display: flex;
@@ -135,6 +164,7 @@ table tr:hover {
     align-items: center;
     background-color: #ffffff;
 }
+
 .user_search input[type="text"] {
     background-color: #f8faff;
     padding: 10px;
@@ -143,6 +173,7 @@ table tr:hover {
     border-radius: 5px;
     font-size: 16px;
 }
+
 .user_search button {
     padding: 10px 15px;
     background-color: #0b70fe;
@@ -152,6 +183,7 @@ table tr:hover {
     cursor: pointer;
     font-size: 16px;
 }
+
 .user_search a {
     padding: 10px 15px;
     background-color: #0b70fe;
@@ -164,15 +196,29 @@ table tr:hover {
 }
 
 .add-user {
-    padding: 50px 300px;
+    margin: 0px 40px 40px 40px;
+    padding: 50px;
     background-color: #ffffff;
 }
+
+.add-user form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .add-user h2 {
     font-size: 30px;
     margin-bottom: 20px;
 }
 
-.add-user input {
+.add-user label {
+    display: block;
+    padding: 7px 12px 12px 5px;
+}
+
+.add-user input,
+.add-user select {
     padding: 20px;
     width: 100%;
     border: 1px solid #ddd;
@@ -181,12 +227,17 @@ table tr:hover {
     margin-bottom: 20px;
     background-color: #f8faff;
 }
+
 .add-user button {
-    padding: 10px 15px;
+    padding: 20px;
     background-color: #0b70fe;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.update_topic {
+    padding: 30px 50px;
 }

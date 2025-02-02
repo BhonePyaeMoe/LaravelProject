@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('usertype', function (Blueprint $table) {
+            $table->id('Type_ID'); // Primary Key
+            $table->string('TypeName');
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->id('User_ID'); // Primary Key
             $table->string('User_Name');
             $table->string('User_Email')->unique();
+            $table->string('User_Password');
             $table->integer('User_Age');
             $table->string('User_Phone');
-            $table->timestamps();
-        });
+            $table->unsignedBigInteger('Type_ID'); // Change to unsignedBigInteger
 
-        Schema::create('user_types', function (Blueprint $table) {
-            $table->id('UserType_ID'); // Primary Key
-            $table->unsignedBigInteger('User_ID'); // Foreign Key
-            $table->string('TypeName');
-            $table->timestamps();
+            $table->foreign('Type_ID')->references('Type_ID')->on('usertype')->onDelete('cascade');
 
-            $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade'); // Foreign Key Constraint
+            $table->timestamps();
         });
     }
 
@@ -35,7 +36,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_types');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('usertype');
     }
 };
