@@ -84,8 +84,8 @@ class UserController extends Controller
             'User_Age' => $request->User_Age,
             'User_Phone' => $request->User_Phone
         ]);
-
-
+        
+        
         return redirect()->route('usermanagement')->with('success', 'User updated successfully.');
     }
 
