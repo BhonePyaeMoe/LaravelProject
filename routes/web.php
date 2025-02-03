@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\UniversityController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,7 +45,11 @@ Route::get('/country/edit/{id}', [CountryController::class, 'edit'])->name('coun
 Route::post('/country/update/{id}', [CountryController::class, 'update'])->name('country.update');
 Route::delete('/country/delete/{id}', [CountryController::class, 'destroy'])->name('country.destroy');
 
-
+Route::get('/universitymanagement', [UniversityController::class, 'index'])->name('universitymanagement');
+Route::post('/university/store', [UniversityController::class, 'store'])->name('university.store');
+Route::get('/university/edit/{id}', [UniversityController::class, 'edit'])->name('university.edit');
+Route::post('/university/update/{id}', [UniversityController::class, 'update'])->name('university.update');
+Route::delete('/university/delete/{id}', [UniversityController::class, 'destroy'])->name('university.destroy');
 
 Route::get('/schedulemanagement', function () {
     return view('Admin.Schedulemanagement');

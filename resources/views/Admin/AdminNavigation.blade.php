@@ -18,7 +18,7 @@
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-handshake"></i> MeetingType </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-regular fa-calendar"> </i> WorkDay </a> </li>
             <li><a href="{{ route('countrymanagement') }}"> <i class="fa fa-solid fa-globe"></i> Country </a> </li>
-            <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-building-columns"></i> Universities </a> </li>
+            <li><a href="{{ route('universitymanagement') }}"> <i class="fa fa-solid fa-building-columns"></i> Universities </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-user-tie"></i> Consultant </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-book"></i> Appointment </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-graduation-cap"></i> Enrollment </a> </li>
