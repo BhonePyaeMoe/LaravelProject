@@ -14,13 +14,16 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id('Appointment_ID');
             $table->unsignedBigInteger('User_ID');
-            $table->date('AppointmentDate');
+            $table->unsignedBigInteger('Consultant_ID');
+            $table->string('Appointment_Topic');
+            $table->text('Appointment_Note')->nullable();
             $table->time('Appointment_StartTime');
             $table->time('Appointment_EndTime');
-            $table->string('Appointment_Topic');
-            $table->text('Appointment_Note')->nullable(); 
-            $table->text('User_Information')->nullable();
+            $table->date('AppointmentDate');
+            $table->text('User_Information');
+            $table->text('Status');
             $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');
+            $table->foreign('Consultant_ID')->references('Consultant_ID')->on('consultants')->onDelete('cascade');
             $table->timestamps();
         });
         
