@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('User_Name');
             $table->string('User_Email')->unique();
             $table->string('User_Password');
+            $table->string('User_Profile')->nullable();
             $table->integer('User_Age');
             $table->string('User_Phone');
             $table->unsignedBigInteger('Type_ID'); // Change to unsignedBigInteger

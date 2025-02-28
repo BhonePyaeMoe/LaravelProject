@@ -11,13 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consultants', function (Blueprint $table) {
-            $table->id('Consultant_ID'); // Primary Key
-            $table->string('Consultant_Name');
-            $table->string('Consultant_Email');
-            $table->timestamps();
-        });
-
         Schema::create('countries', function (Blueprint $table) {
             $table->id('Country_ID'); // Primary Key
             $table->string('Country_Name');
@@ -52,6 +45,5 @@ return new class extends Migration
         Schema::dropIfExists('universities');
         Schema::dropIfExists('consultingcountries');
         Schema::dropIfExists('countries');
-        Schema::dropIfExists('consultants');
     }
 };

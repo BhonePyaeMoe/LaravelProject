@@ -147,6 +147,12 @@ table td button {
     font-size: 14px;
     text-decoration: none;
 }
+table img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
 
 table td button {
     background-color: #dc3545;

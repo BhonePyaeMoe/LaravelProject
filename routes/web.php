@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DateController;
+use App\Http\Controllers\ConsultantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,6 +54,20 @@ Route::get('/university/edit/{id}', [UniversityController::class, 'edit'])->name
 Route::post('/university/update/{id}', [UniversityController::class, 'update'])->name('university.update');
 Route::delete('/university/delete/{id}', [UniversityController::class, 'destroy'])->name('university.destroy');
 
-Route::get('/schedulemanagement', function () {
-    return view('Admin.Schedulemanagement');
-})->name('schedulemanagement');
+Route::get('/schedulemanagement', [ScheduleController::class, 'index'])->name('schedulemanagement');
+Route::post('/schedule/store', [ScheduleController::class, 'store'])->name('schedule.store');
+Route::get('/schedule/edit/{id}', [ScheduleController::class, 'edit'])->name('schedule.edit');
+Route::post('/schedule/update/{id}', [ScheduleController::class, 'update'])->name('schedule.update');
+Route::delete('/schedule/delete/{id}', [ScheduleController::class, 'destroy'])->name('schedule.destroy');
+
+Route::get('/datemanagement', [DateController::class, 'index'])->name('datemanagement');
+Route::post('/date/store', [DateController::class, 'store'])->name('date.store');
+Route::get('/date/edit/{id}', [DateController::class, 'edit'])->name('date.edit');
+Route::post('/date/update/{id}', [DateController::class, 'update'])->name('date.update');
+Route::delete('/date/delete/{id}', [DateController::class, 'destroy'])->name('date.destroy');
+
+Route::get('/consultantmanagement', [ConsultantController::class, 'index'])->name('consultantmanagement');
+Route::post('/consultant/store', [ConsultantController::class, 'store'])->name('consultant.store');
+Route::get('/consultant/edit/{id}', [ConsultantController::class, 'edit'])->name('consultant.edit');
+Route::put('/consultant/update/{id}', [ConsultantController::class, 'update'])->name('consultant.update');
+Route::delete('/consultant/delete/{id}', [ConsultantController::class, 'destroy'])->name('consultant.destroy');

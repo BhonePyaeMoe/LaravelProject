@@ -21,7 +21,6 @@
             <div class="add-user">
                 <form action="{{ route('university.update', $university->University_ID) }}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div>
                         <label for="University_Name">Name:</label>
                         <input type="text" name="University_Name" value="{{ $university->University_Name }}" required>

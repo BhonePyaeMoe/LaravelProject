@@ -12,21 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('schedules', function (Blueprint $table) {
-            $table->id('Schedule_ID'); // Primary Key
+            $table->id('Schedule_ID');
             $table->time('StartTime');
             $table->time('EndTime');
-            $table->date('Schedule_Date');
             $table->timestamps();
         });
 
         Schema::create('workschedules', function (Blueprint $table) {
-            $table->id('WorkSchedule_ID'); // Primary Key
-            $table->unsignedBigInteger('Schedule_ID');
+            $table->id('WorkSchedule_ID');
             $table->unsignedBigInteger('Consultant_ID');
+            $table->unsignedBigInteger('Schedule_ID');
             $table->timestamps();
 
-            $table->foreign('Schedule_ID')->references('Schedule_ID')->on('schedules')->onDelete('cascade');
             $table->foreign('Consultant_ID')->references('Consultant_ID')->on('consultants')->onDelete('cascade');
+            $table->foreign('Schedule_ID')->references('Schedule_ID')->on('schedules')->onDelete('cascade');
         });
     }
 

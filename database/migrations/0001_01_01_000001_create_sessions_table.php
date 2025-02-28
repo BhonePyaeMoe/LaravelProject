@@ -14,14 +14,21 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary(); // The session ID will be the primary key
-            $table->unsignedBigInteger('user_id')->nullable(); // User ID if available
-            $table->string('ip_address', 45)->nullable(); // To store the IP address (IPv4 + IPv6)
-            $table->text('user_agent')->nullable(); // To store the user agent
-            $table->longText('payload'); // To store session data (serialized)
-            $table->integer('last_activity'); // Timestamp of the last activity
+            // The session ID will be the primary key
+            $table->string('id')->primary();
+            // User ID if available
+            $table->unsignedBigInteger('user_id')->nullable();
+            // To store the IP address (IPv4 + IPv6)
+            $table->string('ip_address', 45)->nullable();
+            // To store the user agent
+            $table->text('user_agent')->nullable();
+            // To store session data (serialized)
+            $table->longText('payload');
+            // Timestamp of the last activity
+            $table->integer('last_activity');
             
-            $table->index('user_id'); // Optional: Create an index on the user_id column
+            // Optional: Create an index on the user_id column
+            $table->index('user_id');
         });
     }
 

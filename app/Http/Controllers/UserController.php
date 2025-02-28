@@ -41,6 +41,7 @@ class UserController extends Controller
             'User_Age' => 'required|integer',
             'User_Phone' => 'required|string|max:15',
             'Type_ID' => 'required|integer|exists:usertype,Type_ID', // Add validation for Type_Name
+            'User_Address' => 'required|string|max:255', // Add this line
         ]);
 
         // Create a new user
@@ -51,6 +52,7 @@ class UserController extends Controller
             'User_Age' => $request->User_Age,
             'User_Phone' => $request->User_Phone,
             'Type_ID' => $request->Type_ID,
+            'User_Address' => $request->User_Address, // Add this line
         ]);
 
         return redirect()->route('usermanagement')->with('success', 'User created successfully.');
@@ -61,7 +63,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->TypeName = UserType::find($user->Type_ID)->TypeName;
     
-        return view('Admin.User.UpdateUser', compact('user'));
+        return view('usermanagement', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -70,9 +72,8 @@ class UserController extends Controller
         $request->validate([
             'User_Name' => 'required|string|max:255',
             'User_Email' => 'required|string|email|max:255|unique:users,User_Email,' . $id . ',User_ID',
-            'User_Password' => 'nullable|string|min:8',
             'User_Age' => 'required|integer',
-            'User_Phone' => 'required|string|max:15',
+            'User_Phone' => 'required|string|max:15'
         ]);
 
         // Update the user
@@ -80,7 +81,6 @@ class UserController extends Controller
         $user->update([
             'User_Name' => $request->User_Name,
             'User_Email' => $request->User_Email,
-            'User_Password' => $request->User_Password ? bcrypt($request->User_Password) : $user->User_Password,
             'User_Age' => $request->User_Age,
             'User_Phone' => $request->User_Phone
         ]);
@@ -91,10 +91,14 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        // Delete the user
+        if ($id == 1) {
+            return redirect()->route('usermanagement')->with('error', 'You cannot delete the admin user.');
+        }
+        else{
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('usermanagement')->with('success', 'User deleted successfully.');
+        }
     }
 }
