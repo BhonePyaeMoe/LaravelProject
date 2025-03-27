@@ -106,7 +106,7 @@ body {
 }
 
 .table_display {
-    padding: 40px;
+    padding: 40px 100px 40px 100px;
 }
 
 table {
@@ -148,14 +148,17 @@ table td button {
     text-decoration: none;
 }
 table img {
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: 1px solid black;
 }
 
-table td button {
+table td form button {
     background-color: #dc3545;
+}
+table td button {
+    background-color: #44ec68;
 }
 
 table td a:hover,
@@ -202,7 +205,7 @@ table td button:hover {
 }
 
 .add-user {
-    margin: 0px 40px 40px 40px;
+    margin: 0px 100px 40px 100px;
     padding: 50px;
     background-color: #ffffff;
 }
@@ -215,7 +218,7 @@ table td button:hover {
 
 .add-user h2 {
     font-size: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .add-user label {
@@ -225,7 +228,7 @@ table td button:hover {
 
 .add-user input,
 .add-user select {
-    padding: 20px;
+    padding: 17px;
     width: 100%;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -245,5 +248,5 @@ table td button:hover {
 }
 
 .update_topic {
-    padding: 30px 50px;
+    padding: 30px 100px;
 }

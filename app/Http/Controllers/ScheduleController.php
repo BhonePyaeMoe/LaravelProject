@@ -25,7 +25,7 @@ class ScheduleController extends Controller
         $schedule->EndTime = $request->input('EndTime');
         $schedule->save();
 
-        return redirect()->route('schedulemanagement');
+        return redirect()->route('schedulemanagement')->with('success', 'Schedule created successfully.');
     }
 
     public function edit($id)
