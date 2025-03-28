@@ -10,11 +10,11 @@
     <div class="shader">
         <div class="login-side">
             <h2>Sign In</h2>
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login.post') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
