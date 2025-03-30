@@ -27,10 +27,6 @@
                         <button><i class="fa-solid fa-magnifying-glass"></i></button>
                     </div>
 
-                    <div class="logout">
-                        <a href="{{ route('login') }}"><i class="fa-solid fa-power-off"></i></a>
-                    </div>
-
                 </div>
             </div>
 

@@ -31,17 +31,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($user) {
-            if (!Hash::needsRehash($user->User_Password)) {
-                $user->User_Password = bcrypt($user->User_Password);
-            }
-        });
-    }
-
     public function userType()
     {
         return $this->belongsTo(UserType::class, 'Type_ID', 'Type_ID');

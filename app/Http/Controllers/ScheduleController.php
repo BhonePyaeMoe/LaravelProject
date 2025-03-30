@@ -41,7 +41,7 @@ class ScheduleController extends Controller
         $schedule->EndTime = $request->input('EndTime');
         $schedule->save();
 
-        return redirect()->route('schedulemanagement');
+        return redirect()->route('schedulemanagement') ->with('success', 'Schedule updated successfully.');
     }
 
     public function destroy($id)
@@ -49,6 +49,6 @@ class ScheduleController extends Controller
         $schedule = Schedule::findOrFail($id);
         $schedule->delete();
 
-        return redirect()->route('schedulemanagement');
+        return redirect()->route('schedulemanagement') ->with('success', 'Schedule deleted successfully.');
     }
 }

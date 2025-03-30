@@ -19,7 +19,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f8f9fa;
-    animation: fadein 2s;
+    animation: fadein 1.5s;
 }
 
 .shader {

@@ -9,15 +9,16 @@
     <title>Document</title>
 </head>
 <style>
-    *
-    {
+    /* Error Box */
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
+
     .error-box {
         position: fixed;
-        z-index: 1000;
+        z-index: 10;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -26,10 +27,10 @@
         background-color: #f8d7da;
         color: #721c24;
         padding: 15px 20px;
-        border: 1px solid #f5c6cb;
         border-radius: 5px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .error-box button {
         background: none;
         border: none;
@@ -52,6 +53,19 @@
             <button onclick="this.parentElement.style.display='none'"><i class="fa-solid fa-xmark"></i></button>
         </div>
     @endif
+
+    <script>
+        setTimeout(() => {
+            const errorBox = document.querySelector('.error-box');
+            if (errorBox) {
+                errorBox.style.transition = 'opacity 0.5s ease';
+                errorBox.style.opacity = '0';
+                setTimeout(() => {
+                    errorBox.style.display = 'none';
+                }, 1500);
+            }
+        }, 1500);
+    </script>
 
 </body>
 

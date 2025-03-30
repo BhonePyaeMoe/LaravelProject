@@ -14,25 +14,24 @@ class AuthController extends Controller
         $password = $request->input('password');
 
         $user = User::where('User_Name', $username)->first();
-
-        if ($user && Hash::check($password, $user->User_Password)) {
+        $user_password = $user->User_Password;
+        
+        if ($user && Hash::check($password, $user_password )) {
             $Type_ID = $user->Type_ID;
-            $User_ID = $user->User_ID;
 
-            session(['User_ID' => $User_ID]);
+            session([
+                'data' => $user,
+                ]);
             
             if($Type_ID == 1 || $Type_ID == 2){
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard') ->with('success', 'Admin Login successful.');
             }
             else
             {
-                return redirect()->route('welcome');
+                return redirect()->route('welcome')->with('success', 'Login successful.');
             }
         } else {
-            return response()->json(['username' => $username, 'password' => $password], 401);
-
-            // return redirect()->route('login') 
-            //     ->with('error', 'Invalid username or password.');
+            return redirect()->route('login')->with('error', $user-> User_Email);
         }
     }
 
@@ -45,7 +44,6 @@ class AuthController extends Controller
         ]);
 
         try {
-
             // Validation
             if ( $request->User_Password != $request->User_Password_confirmation) {
                 return redirect()->route('login')->with('error', 'Password confirmation does not match.');
@@ -62,7 +60,7 @@ class AuthController extends Controller
                     'User_Name' => $request->User_Name,
                     'User_Email' => $request->User_Email,
                     'User_Phone' => $request->User_Phone,
-                    'User_Password' => bcrypt($request->User_Password),
+                    'User_Password' => Hash::make($request->User_Password), // Ensure password is hashed
                     'Type_ID' => 3, // Assuming Type_ID 3 is for regular users
                 ]);
     
@@ -74,4 +72,12 @@ class AuthController extends Controller
             return redirect()->route('login')->with('error', 'Registration failed. Please try again.');
         }
     }
+
+    public function logout()
+    {
+        session()->forget('data');
+        return redirect()->route('login')->with('success', 'Logged out successfully.');
+    }
+
+    
 }

@@ -29,7 +29,7 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('auth');
 })->name('login');
-
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login/post', [AuthController::class, 'checkUser'])->name('login.post');
 Route::post('/login/register', [AuthController::class, 'Register'])->name('login.register');
 

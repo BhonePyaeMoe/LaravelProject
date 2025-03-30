@@ -25,7 +25,7 @@ class DateController extends Controller
         $date->Day = $request->input('Day');
         $date->save();
 
-        return redirect()->route('datemanagement');
+        return redirect()->route('datemanagement') ->with('success', 'Date created successfully.');
     }
 
     public function edit($id)
@@ -41,7 +41,7 @@ class DateController extends Controller
         $date->Day = $request->input('Day');
         $date->save();
 
-        return redirect()->route('datemanagement');
+        return redirect()->route('datemanagement') ->with('success', 'Date updated successfully.');
     }
 
     public function destroy($id)
@@ -49,6 +49,6 @@ class DateController extends Controller
         $date = Date::findOrFail($id);
         $date->delete();
 
-        return redirect()->route('datemanagement');
+        return redirect()->route('datemanagement') ->with('success', 'Date deleted successfully.');
     }
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    @include('errorhandling')
+    @include('errorhandling') 
 
     <div class="shader">
         <div class="login-side">
