@@ -20,6 +20,8 @@
             <div class="add-user">
                 <form action="{{ route('consultant.update', $consultant->Consultant_ID) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    
+
                     <div>
                         <label for="Consultant_Name">Name:</label>
                         <input type="text" name="Consultant_Name" value="{{ $consultant->Consultant_Name }}" required>
@@ -27,11 +29,6 @@
                     <div>   
                         <label for="Profile">Profile:</label>
                         <input type="file" name="Profile">
-                        @if($consultant->Profile)
-                            <div>
-                                <img src="data:image/jpeg;base64,{{ $consultant->Profile }}" alt="Profile Image" width="100" height="100">
-                            </div>
-                        @endif
                     </div>
                     <div>
                         <label for="Experience">Experience:</label>

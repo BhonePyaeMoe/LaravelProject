@@ -109,6 +109,28 @@ body {
     padding: 40px 100px 40px 100px;
 }
 
+.table_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table_header h2 {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.assign-user a {
+    padding: 10px 20px;
+    background-color: #0b70fe;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -205,6 +227,7 @@ table td button:hover {
 }
 
 .add-user {
+    position: relative;
     margin: 0px 100px 40px 100px;
     padding: 50px;
     background-color: #ffffff;
@@ -235,6 +258,15 @@ table td button:hover {
     font-size: 16px;
     margin-bottom: 20px;
     background-color: #f8faff;
+}
+
+/* Add select styles for the assign page only */
+#assign {
+    font-size: 18px;
+}
+
+option {
+    font-size: 18px;
 }
 
 .add-user button {

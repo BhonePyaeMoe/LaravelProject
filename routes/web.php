@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AssignController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CountryController;
@@ -28,13 +30,18 @@ Route::get('/login', function () {
     return view('auth');
 })->name('login');
 
-Route::get('/register', function () {
-    return view('register');
-})->name('register');
+Route::post('/login/post', [AuthController::class, 'checkUser'])->name('login.post');
+Route::post('/login/register', [AuthController::class, 'Register'])->name('login.register');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/scheduleassign', [AssignController::class, 'index'])->name('scheduleassign');
+Route::post('/scheduleassign/store', [AssignController::class, 'store'])->name('scheduleassign.store');
+Route::get('/scheduleassign/edit/{id}', [AssignController::class, 'edit'])->name('scheduleassign.edit');
+Route::post('/scheduleassign/update/{id}', [AssignController::class, 'update'])->name('scheduleassign.update');
+Route::delete('/scheduleassign/delete/{id}', [AssignController::class, 'destroy'])->name('scheduleassign.destroy');
 
 Route::get('/usermanagement', [UserController::class, 'index'])->name('usermanagement');
 Route::post('/usermanagement/store', [UserController::class, 'store'])->name('user.store');
@@ -69,5 +76,5 @@ Route::delete('/date/delete/{id}', [DateController::class, 'destroy'])->name('da
 Route::get('/consultantmanagement', [ConsultantController::class, 'index'])->name('consultantmanagement');
 Route::post('/consultant/store', [ConsultantController::class, 'store'])->name('consultant.store');
 Route::get('/consultant/edit/{id}', [ConsultantController::class, 'edit'])->name('consultant.edit');
-Route::put('/consultant/update/{id}', [ConsultantController::class, 'update'])->name('consultant.update');
+Route::post('/consultant/update/{id}', [ConsultantController::class, 'update'])->name('consultant.update');
 Route::delete('/consultant/delete/{id}', [ConsultantController::class, 'destroy'])->name('consultant.destroy');

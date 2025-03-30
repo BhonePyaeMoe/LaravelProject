@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Document</title>
+</head>
+<style>
+    *
+    {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .error-box {
+        position: fixed;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        top: 0;
+        left: 0;
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 15px 20px;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .error-box button {
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+
+    @if (session('error'))
+        <div class="error-box">
+            <p>{{ session('error') }}</p>
+            <button onclick="this.parentElement.style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="error-box" style="background-color: #d4edda; color: #155724;">
+            <p>{{ session('success') }}</p>
+            <button onclick="this.parentElement.style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    @endif
+
+</body>
+
+</html>

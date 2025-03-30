@@ -13,6 +13,7 @@
     <aside class="sidebar">
         <a href="{{ route('dashboard') }}"><img src="{{ asset('Images/Logo2.png') }}" alt="NovaBright Logo"></a>
         <ul class="admin_menu">
+            <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-house"></i> Home </a></li>
             <li><a href="{{ route('usermanagement') }}"> <i class="fa fa-regular fa-user"> </i> User </a></li>
             <li><a href="{{ route('schedulemanagement') }}"> <i class="fa fa-solid fa-business-time"></i> WorkSchedule </a> </li>
             <li><a href="{{ route('datemanagement') }}"> <i class="fa fa-regular fa-calendar"> </i> WorkDate </a> </li>
@@ -20,7 +21,6 @@
             <li><a href="{{ route('universitymanagement') }}"> <i class="fa fa-solid fa-building-columns"></i> Universities </a> </li>
             <li><a href="{{ route('consultantmanagement') }}"> <i class="fa fa-solid fa-user-tie"></i> Consultant </a> </li>
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-book"></i> Appointment </a> </li>
-            <li><a href="{{ route('login') }}"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout </a> </li>
 
         </ul>
     </aside>

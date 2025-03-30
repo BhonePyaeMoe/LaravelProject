@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('User_Email')->unique();
             $table->string('User_Password');
             $table->string('User_Profile')->nullable();
-            $table->integer('User_Age');
-            $table->string('User_Phone');
+            $table->integer('User_Age')->nullable();
+            $table->string('User_Phone')->nullable(false); // Ensure this matches the validation
             $table->unsignedBigInteger('Type_ID'); // Change to unsignedBigInteger
 
             $table->foreign('Type_ID')->references('Type_ID')->on('usertype')->onDelete('cascade');

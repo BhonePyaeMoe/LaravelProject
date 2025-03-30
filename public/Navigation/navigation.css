@@ -209,6 +209,15 @@
     height: 100vh;
 }
 
+.adnin_menu li {
+    display: inline-block;
+}
+
+.admin_menu a,
+.admin_menu i {
+    white-space: nowrap;
+}
+
 .admin_menu li a {
     text-decoration: none;
     padding: 40px;

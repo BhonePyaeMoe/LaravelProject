@@ -41,7 +41,6 @@ class UserController extends Controller
             'User_Age' => 'required|integer',
             'User_Phone' => 'required|string|max:15',
             'Type_ID' => 'required|integer|exists:usertype,Type_ID', // Add validation for Type_Name
-            'User_Address' => 'required|string|max:255', // Add this line
         ]);
 
         // Create a new user
@@ -52,7 +51,6 @@ class UserController extends Controller
             'User_Age' => $request->User_Age,
             'User_Phone' => $request->User_Phone,
             'Type_ID' => $request->Type_ID,
-            'User_Address' => $request->User_Address, // Add this line
         ]);
 
         return redirect()->route('usermanagement')->with('success', 'User created successfully.');

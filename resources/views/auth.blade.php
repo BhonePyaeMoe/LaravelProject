@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{ asset('Auth/auth.css') }}">
 </head>
 <body>
+
+    @include('errorhandling')
+
     <div class="shader">
         <div class="login-side">
             <h2>Sign In</h2>
@@ -29,23 +32,27 @@
         </div>
         <div class="signup-side">
             <h2>Create Account</h2>
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('login.register') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" class="form-control" required>
+                    <input type="text" id="name" name="User_Name" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="signup-email" name="email" class="form-control" required>
+                    <input type="email" id="signup-email" name="User_Email" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">PhoneNumber:</label>
-                    <input type="text" id="phone" name="phone" class="form-control" required>
+                    <input type="text" id="phone" name="User_Phone" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="signup-password" name="password" class="form-control" required>
+                    <input type="password" id="signup-password" name="User_Password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password_confirmation">Confirm Password:</label>
+                    <input type="password" id="password_confirmation" name="User_Password_confirmation" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>

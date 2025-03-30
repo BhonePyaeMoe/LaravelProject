@@ -25,7 +25,16 @@
 
             <div class="table_display">
                 
-                <h1>Schedule Management</h1>
+                <div class="table_header">                
+                    <h1>Schedule Management</h1>
+
+                    <div class="assign-user">
+                        <a href="{{ route('scheduleassign') }}" class="assign">Assign</a>
+                    </div>
+
+
+                </div>
+
 
                 <table>
                     <thead>
