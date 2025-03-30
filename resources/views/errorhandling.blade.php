@@ -21,12 +21,12 @@
         z-index: 10;
         display: flex;
         justify-content: space-between;
-        width: 100%;
+        width: 30%;
         top: 0;
-        left: 0;
+        left: 35%;
         background-color: #f8d7da;
         color: #721c24;
-        padding: 15px 20px;
+        padding: 15px 30px;
         border-radius: 5px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }

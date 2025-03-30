@@ -28,10 +28,10 @@ class AuthController extends Controller
             }
             else
             {
-                return redirect()->route('welcome')->with('success', 'Login successful.');
+                return redirect()->route('home')->with('success', 'User Login successful.');
             }
         } else {
-            return redirect()->route('login')->with('error', $user-> User_Email);
+            return redirect()->route('login')->with('error', Hash::check($password, $user_password) ? 'Invalid username or password.' : 'Password is incorrect.');
         }
     }
 

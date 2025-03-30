@@ -24,8 +24,7 @@
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" id="remember" name="remember"> 
-                    <label for="remember">Remember Me</label>
+                    <a href="{{ route('forgotpassword')}}"> Forget Password</a>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>

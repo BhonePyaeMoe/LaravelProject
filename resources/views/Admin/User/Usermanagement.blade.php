@@ -27,9 +27,6 @@
             <div class="table_display">
                 
                 <h1>User Management</h1>
-                @if(session('data'))
-                    <p>{{ session('data') }}</p>
-                @endif
 
                 <table>
                     <thead>

@@ -9,6 +9,10 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DateController;
 use App\Http\Controllers\ConsultantController;
+use App\Http\Controllers\DateAssignController;
+use App\Http\Controllers\ScheduleAssignController;
+use App\Http\Controllers\ConsultingCountryController;
+use App\Http\Controllers\CountryAssignController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +33,11 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('auth');
 })->name('login');
+
+Route::get('/forgotpassword', function () {
+    return view('forgotpassword');
+})->name('forgotpassword');
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login/post', [AuthController::class, 'checkUser'])->name('login.post');
 Route::post('/login/register', [AuthController::class, 'Register'])->name('login.register');
@@ -37,11 +46,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/scheduleassign', [AssignController::class, 'index'])->name('scheduleassign');
-Route::post('/scheduleassign/store', [AssignController::class, 'store'])->name('scheduleassign.store');
-Route::get('/scheduleassign/edit/{id}', [AssignController::class, 'edit'])->name('scheduleassign.edit');
-Route::post('/scheduleassign/update/{id}', [AssignController::class, 'update'])->name('scheduleassign.update');
-Route::delete('/scheduleassign/delete/{id}', [AssignController::class, 'destroy'])->name('scheduleassign.destroy');
+Route::get('/scheduleassign', [ScheduleAssignController::class, 'index'])->name('scheduleassign');
+Route::post('/scheduleassign/store', [ScheduleAssignController::class, 'store'])->name('scheduleassign.store');
+Route::get('/scheduleassign/edit/{id}', [ScheduleAssignController::class, 'edit'])->name('scheduleassign.edit');
+Route::put('/scheduleassign/update/{id}', [ScheduleAssignController::class, 'update'])->name('scheduleassign.update');
+Route::delete('/scheduleassign/delete/{id}', [ScheduleAssignController::class, 'destroy'])->name('scheduleassign.destroy');
+
+Route::get('/dateassign', [DateAssignController::class, 'index'])->name('dateassign');
+Route::post('/dateassign/store', [DateAssignController::class, 'store'])->name('dateassign.store');
+Route::get('/dateassign/edit/{id}', [DateAssignController::class, 'edit'])->name('dateassign.edit');
+Route::post('/dateassign/update/{id}', [DateAssignController::class, 'update'])->name('dateassign.update');
+Route::delete('/dateassign/delete/{id}', [DateAssignController::class, 'destroy'])->name('dateassign.destroy');
 
 Route::get('/usermanagement', [UserController::class, 'index'])->name('usermanagement');
 Route::post('/usermanagement/store', [UserController::class, 'store'])->name('user.store');
@@ -78,3 +93,9 @@ Route::post('/consultant/store', [ConsultantController::class, 'store'])->name('
 Route::get('/consultant/edit/{id}', [ConsultantController::class, 'edit'])->name('consultant.edit');
 Route::post('/consultant/update/{id}', [ConsultantController::class, 'update'])->name('consultant.update');
 Route::delete('/consultant/delete/{id}', [ConsultantController::class, 'destroy'])->name('consultant.destroy');
+
+Route::get('/countryassign', [CountryAssignController::class, 'index'])->name('countryassign');
+Route::post('/countryassign/store', [CountryAssignController::class, 'store'])->name('countryassign.store');
+Route::get('/countryassign/edit/{id}', [CountryAssignController::class, 'edit'])->name('countryassign.edit');
+Route::post('/countryassign/update/{id}', [CountryAssignController::class, 'update'])->name('countryassign.update');
+Route::delete('/countryassign/delete/{id}', [CountryAssignController::class, 'destroy'])->name('countryassign.destroy');

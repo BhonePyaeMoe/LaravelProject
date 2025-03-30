@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         Schema::create('workdates', function (Blueprint $table) {
-            $table->id('Workdate_ID');
+            $table->id('WorkDate_ID');
             $table->unsignedBigInteger('Consultant_ID');
             $table->unsignedBigInteger('Date_ID');
             $table->timestamps();

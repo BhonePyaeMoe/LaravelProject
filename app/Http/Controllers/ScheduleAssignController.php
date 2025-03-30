@@ -7,12 +7,17 @@ use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Models\WorkSchedules;
 
-class AssignController extends Controller
+class ScheduleAssignController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $workschedules = WorkSchedules::with(['Consultant', 'Schedule'])->get();
-        $workschedules = $workschedules->sortBy('Schedule.StartTime');
+        $search = $request->input('search');
+        $workschedules = WorkSchedules::with(['Consultant', 'Schedule'])
+            ->when($search, function ($query, $search) {
+            return $query->whereHas('Consultant', function ($q) use ($search) {
+                $q->where('Consultant_Name', 'like', "%{$search}%");
+            });
+            })->get();
 
         $schedules = Schedule::all();
         $consultants = Consultant::all();
@@ -45,7 +50,7 @@ class AssignController extends Controller
         $schedules = Schedule::all();
         $consultants = Consultant::all();
 
-        return view('Admin.Assign.editassign', compact('workSchedule', 'schedules', 'consultants'));
+        return view('Admin.Assign.updatescheduleassign', compact('workSchedule', 'schedules', 'consultants'));
     }
     public function update(Request $request, $id)
     {

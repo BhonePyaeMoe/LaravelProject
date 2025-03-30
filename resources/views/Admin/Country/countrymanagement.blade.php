@@ -25,7 +25,15 @@
 
             <div class="table_display">
                 
-                <h1>Country Management</h1>
+                <div class="table_header">                
+                    <h1>Country Management</h1>
+
+                    <div class="assign-user">
+                        <a href="{{ route('countryassign') }}" class="assign">Assign</a>
+                    </div>
+
+
+                </div>
 
                 <table>
                     <thead>

@@ -27,7 +27,15 @@
 
             <div class="table_display">
                 
-                <h1>Date Management</h1>
+                <div class="table_header">                
+                    <h1>Date Management</h1>
+
+                    <div class="assign-user">
+                        <a href="{{ route('dateassign') }}" class="assign">Assign</a>
+                    </div>
+
+
+                </div>
 
                 <table>
                     <thead>

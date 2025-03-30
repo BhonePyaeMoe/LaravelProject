@@ -9,6 +9,7 @@
 <body>
 
     @include('navigation')
+    @include('errorhandling')
 
     <div class="first_container">
 

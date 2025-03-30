@@ -33,6 +33,9 @@
             <div class="main_content">
                 <h1>Dashboard</h1>
                 <p>Welcome to the Dashboard</p>
+                @if(session('data'))
+                  <p>{{ session('data') }}</p>
+                @endif
 
                 <canvas id="myChart" width="100" height="50"></canvas>
 
