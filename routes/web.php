@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AssignController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,7 @@ use App\Http\Controllers\ConsultingCountryController;
 use App\Http\Controllers\CountryAssignController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Customer/welcome');
 })->name('home');
 
 Route::get('/about', function () {
@@ -99,3 +100,12 @@ Route::post('/countryassign/store', [CountryAssignController::class, 'store'])->
 Route::get('/countryassign/edit/{id}', [CountryAssignController::class, 'edit'])->name('countryassign.edit');
 Route::post('/countryassign/update/{id}', [CountryAssignController::class, 'update'])->name('countryassign.update');
 Route::delete('/countryassign/delete/{id}', [CountryAssignController::class, 'destroy'])->name('countryassign.destroy');
+
+
+
+
+
+
+
+// For Customer
+Route::get('/chooseconsultant', [AppointmentController::class, 'showconsultant'])->name('chooseconsultant');

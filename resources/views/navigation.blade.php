@@ -15,7 +15,7 @@
         <ul>
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About</a></li>
-            <li><a href="{{ route('services') }}">Services</a></li>
+            <li><a href="{{ route('chooseconsultant') }}">Services</a></li>
             <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
 
@@ -25,7 +25,11 @@
             <div class="bar"></div> 
         </button>
 
-        <a href="{{ route('login') }}" class="Login_btn"> Login </a>
+        @if (session('data.Type_ID') == '3')
+            <a href="{{ route('logout') }}" class="Login_btn"> Logout </a>
+        @else
+            <a href="{{ route('login') }}" class="Login_btn"> Login </a>
+        @endif
     </nav>
 
 
