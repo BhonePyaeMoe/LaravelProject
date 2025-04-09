@@ -150,7 +150,7 @@
 
                 <p> {{ $schedule}} </p>
                 <div style="display: inline-block; margin: 5px; padding: 10px; background-color: #007bff; color: #fff; border-radius: 5px;">
-                    <a href="{{ route('appointment', ['id1' => $schedule->Schedule_ID, 'id2' => $workdates->Consultant_ID, 'date' => 'date']) }}" onclick="this.href=this.href.replace('date', document.getElementById('hiddendate').value)"> {{ $schedule->StartTime }} - {{ $schedule->EndTime }}</a>
+                    <a href="{{ route('bookappointment', ['id1' => $schedule->Schedule_ID, 'id2' => $workdates->Consultant_ID, 'date' => 'date']) }}" onclick="this.href=this.href.replace('date', document.getElementById('hiddendate').value)"> {{ $schedule->StartTime }} - {{ $schedule->EndTime }}</a>
                 </div>
             @endforeach
 

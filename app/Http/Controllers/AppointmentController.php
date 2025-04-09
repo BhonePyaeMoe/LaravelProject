@@ -38,5 +38,36 @@ class AppointmentController extends Controller
         return view('Customer.bookappointment', compact('consultants', 'schedules', 'dates'));
     }
 
+    public function storeappointment(Request $request)
+    {
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+            'consultant_id' => 'required',
+            'status' => 'required',
+            'appointment_date' => 'required',
+            'appointment_starttime' => 'required',
+            'appointment_endtime' => 'required',
+            'topic' => 'required|string|max:255',
+            'user_information' => 'required|string|max:255',
+            'notes' => 'nullable',
+            'consultant_name' => 'string',
+        ]);
+
+        $appointment = new Appointment();
+        $appointment->User_ID = $validatedData['user_id'];
+        $appointment->Consultant_ID = $validatedData['consultant_id'];
+        $appointment->Status = $validatedData['status'];
+        $appointment->AppointmentDate = $validatedData['appointment_date'];
+        $appointment->Appointment_StartTime = $validatedData['appointment_starttime'];
+        $appointment->Appointment_EndTime = $validatedData['appointment_endtime'];
+        $appointment->Appointment_Topic = $validatedData['topic'];
+        $appointment->User_Information = $validatedData['user_information'];
+        $appointment->Appointment_Note = $validatedData['notes'] ?? null;
+
+        $appointment->save();
+
+        return redirect()->route('home') ->with('success', 'Appointment booked successfully!');
+    }
+
 }
 

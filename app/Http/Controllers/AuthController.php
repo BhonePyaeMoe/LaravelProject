@@ -78,6 +78,11 @@ class AuthController extends Controller
         session()->forget('data');
         return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
+    
+    public function Creturn()
+    {
+        return redirect()->route('home')->with('error', 'Please Log In First');
+    }
 
     
 }
