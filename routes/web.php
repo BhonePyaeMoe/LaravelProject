@@ -109,3 +109,5 @@ Route::delete('/countryassign/delete/{id}', [CountryAssignController::class, 'de
 
 // For Customer
 Route::get('/chooseconsultant', [AppointmentController::class, 'showconsultant'])->name('chooseconsultant');
+Route::get('/choosedatetime/{id}', [AppointmentController::class, 'showdatetime'])->name('choosedatetime');
+Route::get('/appointment/{id1}/{id2}/{date}', [AppointmentController::class, 'showappointment'])->name('appointment');

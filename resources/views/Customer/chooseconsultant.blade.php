@@ -67,7 +67,7 @@
                 <p>{{ $consultingcountries->Country_Name}}</p>
             @endforeach
 
-            <a href="{{ route('chooseconsultant') }}">Book Appointment</a>
+            <a href="{{ route('choosedatetime', $consultant->Consultant_ID) }}">Book Appointment</a>
         </div>
     @endforeach
     

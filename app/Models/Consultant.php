@@ -34,4 +34,29 @@ class Consultant extends Model
             'Country_ID'     // Local key on ConsultingCountry table
         );
     }
+
+    public function dates()
+    {
+        return $this->hasManyThrough(
+            Date::class,
+            WorkDates::class,
+            'Consultant_ID', // Foreign key on WorkDate table
+            'Date_ID',       // Foreign key on Date table
+            'Consultant_ID', // Local key on Consultant table
+            'Date_ID'        // Local key on WorkDate table
+        );
+    }
+
+    public function schedules()
+    {
+        return $this->hasManyThrough(
+            Schedule::class,
+            WorkSchedules::class,
+            'Consultant_ID', // Foreign key on WorkSchedule table
+            'Schedule_ID',   // Foreign key on Schedule table
+            'Consultant_ID', // Local key on Consultant table
+            'Schedule_ID'    // Local key on WorkSchedule table
+        );
+    }
+
 }

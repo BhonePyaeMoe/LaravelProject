@@ -26,15 +26,6 @@ return new class extends Migration
             $table->foreign('Consultant_ID')->references('Consultant_ID')->on('consultants')->onDelete('cascade');
             $table->timestamps();
         });
-        
-        Schema::create('enrollments', function (Blueprint $table) {
-            $table->id('EnrollmentID');
-            $table->unsignedBigInteger('Appointment_ID');
-            $table->text('EnrollmentNote')->nullable();
-            $table->boolean('IsComplete')->default(false);
-            $table->foreign('Appointment_ID')->references('Appointment_ID')->on('appointments')->onDelete('cascade');
-            $table->timestamps();
-        });
     }
 
     /**
@@ -42,7 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enrollments');
         Schema::dropIfExists('appointments');
     }
 };

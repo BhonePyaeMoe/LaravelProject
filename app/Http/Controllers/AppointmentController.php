@@ -21,5 +21,22 @@ class AppointmentController extends Controller
         
         return view('Customer.chooseconsultant', compact('consultants'));
     }
+
+    public function showdatetime($id)
+    {
+        $workdates = Consultant::with(['dates'])->find($id);
+        $workschedules = Consultant::with(['schedules'])->find($id);
+
+        return view('Customer.choosedatetime', compact('workdates', 'workschedules'));
+    }
+    public function showappointment($id1, $id2, $date)
+    {
+        $schedules = Schedule::find($id1);
+        $consultants = Consultant::find($id2);
+        $dates = Date::where('Date', $date)->first();
+
+        return view('Customer.bookappointment', compact('consultants', 'schedules', 'dates'));
+    }
+
 }
 
