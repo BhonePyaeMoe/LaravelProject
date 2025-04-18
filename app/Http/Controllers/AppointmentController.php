@@ -69,5 +69,19 @@ class AppointmentController extends Controller
         return redirect()->route('home') ->with('success', 'Appointment booked successfully!');
     }
 
+    public function showappointmentlist($userid)
+    {
+        if($userid == 'empty') {
+            return redirect()->route('home')->with('error', 'Please Login First');
+        }
+
+        $appointments = Appointment::where('User_ID', $userid)->with(['consultant'])->get();
+        if ($appointments->isEmpty()) {
+            return redirect()->route('home')->with('error', 'No appointments found.');
+        }
+        
+        return view('Customer.history', compact('appointments'));
+    }
+
 }
 

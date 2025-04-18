@@ -14,11 +14,14 @@
 }
 body {
     font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.auth {
+    padding-top: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: #f8f9fa;
     animation: fadein 1.5s;
 }
 
@@ -93,7 +96,6 @@ body {
 
 .signup-side,
 .login-side {
-    height: 100%;
     padding: 45px;
     width: 50%;
     display: flex;
