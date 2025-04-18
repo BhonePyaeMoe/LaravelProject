@@ -15,6 +15,47 @@ use Illuminate\Support\Facades\DB;
 
 class AppointmentController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $search = $request->input('search');
+        $appointments = Appointment::with(['consultant', 'user'])
+            ->when($search, function ($query, $search) {
+                return $query->whereHas('consultant', function ($q) use ($search) {
+                    $q->where('Consultant_Name', 'like', "%{$search}%");
+                })->orWhereHas('user', function ($q) use ($search) {
+                    $q->where('User_Name', 'like', "%{$search}%");
+                });
+            })->get();
+        return view('Admin.Appointment.appointmentmanagement', compact('appointments'));    
+    }
+
+    
+    public function edit($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $consultants = Consultant::all();
+        $countries = Country::all();
+        $schedules = Schedule::all();
+        $dates = Date::all();
+        return view('Admin.Appointment.updateAppointment', compact('appointment', 'consultants', 'countries', 'schedules', 'dates'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->update($request->all());
+        return redirect()->route('appointmentmanagement')->with('success', 'Appointment updated successfully.');
+    }
+
+    public function destroy($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->delete();
+        return redirect()->route('appointmentmanagement')->with('success', 'Appointment deleted successfully.');
+    }
+
+
     public function showconsultant()
     {
         $consultants = Consultant::with(['countries'])->get();
