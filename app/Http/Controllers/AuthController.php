@@ -14,24 +14,27 @@ class AuthController extends Controller
         $password = $request->input('password');
 
         $user = User::where('User_Name', $username)->first();
-        $user_password = $user->User_Password;
-        
-        if ($user && Hash::check($password, $user_password )) {
-            $Type_ID = $user->Type_ID;
+        if ($user) {
+            $user_password = $user->User_Password;
 
-            session([
-                'data' => $user,
+            if (Hash::check($password, $user_password)) {
+                $Type_ID = $user->Type_ID;
+
+                session([
+                    'data' => $user,
                 ]);
-            
-            if($Type_ID == 1 || $Type_ID == 2){
-                return redirect()->route('dashboard') ->with('success', 'Admin Login successful.');
+
+                if ($Type_ID == 1 || $Type_ID == 2) {
+                    return redirect()->route('dashboard')->with('success', 'Admin Login successful.');
+                } else {
+                    return redirect()->route('home')->with('success', 'User Login successful.');
+                }
+            } else {
+                return redirect()->route('login')->with('error', 'Invalid username or password.');
             }
-            else
-            {
-                return redirect()->route('home')->with('success', 'User Login successful.');
-            }
-        } else {
-            return redirect()->route('login')->with('error', Hash::check($password, $user_password) ? 'Invalid username or password.' : 'Password is incorrect.');
+        }
+        else    {
+            return redirect()->route('login')->with('error', 'Invalid username or password.');
         }
     }
 
@@ -45,7 +48,7 @@ class AuthController extends Controller
 
         try {
             // Validation
-            if ( $request->User_Password != $request->User_Password_confirmation) {
+            if ($request->User_Password != $request->User_Password_confirmation) {
                 return redirect()->route('login')->with('error', 'Password confirmation does not match.');
             }
             if (strlen($request->User_Password) < 8) {
@@ -53,9 +56,7 @@ class AuthController extends Controller
             }
             if (User::where('User_Email', $request->User_Email)->exists()) {
                 return redirect()->route('login')->with('error', 'Email already exists.');
-            }
-            else
-            {
+            } else {
                 User::create([
                     'User_Name' => $request->User_Name,
                     'User_Email' => $request->User_Email,
@@ -63,11 +64,9 @@ class AuthController extends Controller
                     'User_Password' => Hash::make($request->User_Password), // Ensure password is hashed
                     'Type_ID' => 3, // Assuming Type_ID 3 is for regular users
                 ]);
-    
+
                 return redirect()->route('login')->with('success', 'Registration successful. Please log in.');
             }
-
-            
         } catch (\Exception $e) {
             return redirect()->route('login')->with('error', 'Registration failed. Please try again.');
         }
@@ -78,11 +77,14 @@ class AuthController extends Controller
         session()->forget('data');
         return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
-    
+
     public function Creturn()
     {
         return redirect()->route('home')->with('error', 'Please Log In First');
     }
 
-    
+    public function Areturn()
+    {
+        return redirect()->route('login')->with('error', 'You are not authorized to access this page.');
+    }
 }

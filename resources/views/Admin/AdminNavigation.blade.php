@@ -11,7 +11,8 @@
 </head>
 
 <body>
-
+    
+    @include('Admin.Security')
     @include('errorhandling')
 
     <aside class="sidebar">

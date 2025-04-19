@@ -16,7 +16,9 @@
     <nav class="desktop_nav">
 
         <ul>
+
             <li><a href="{{ route('home') }}">Home</a></li>
+            <p>{{session('error')}}</p>
         </ul>
 
     </nav>

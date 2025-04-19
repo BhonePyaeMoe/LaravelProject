@@ -13,6 +13,7 @@
 
 <body>
 
+    @include('Admin.Security')
     @include('Admin.AdminNavigation')
 
     <div class="container">

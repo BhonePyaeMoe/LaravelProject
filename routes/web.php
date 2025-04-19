@@ -108,7 +108,8 @@ Route::post('/appointment/update/{id}', [AppointmentController::class, 'update']
 Route::delete('/appointment/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
 
 
-
+Route::get('/AReturn', [AuthController::class, 'Areturn'])->name('AReturn');
+Route::get('/CReturn', [AuthController::class, 'Creturn'])->name('CReturn');
 
 
 
@@ -118,5 +119,5 @@ Route::get('/chooseconsultant', [AppointmentController::class, 'showconsultant']
 Route::get('/choosedatetime/{id}', [AppointmentController::class, 'showdatetime'])->name('choosedatetime');
 Route::get('/bookappointment/{id1}/{id2}/{date}', [AppointmentController::class, 'showappointment'])->name('bookappointment');
 Route::post('/bookappointment/store', [AppointmentController::class, 'storeappointment'])->name('bookappointment.store');
-Route::get('/CReturn', [AuthController::class, 'Creturn'])->name('CReturn');
+
 Route::get('/history/{userid}', [AppointmentController::class, 'showappointmentlist'])->name('history');

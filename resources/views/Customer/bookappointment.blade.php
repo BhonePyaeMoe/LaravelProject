@@ -75,30 +75,26 @@
 
 <body>
     <div class="container">
-        <h1>Book Appointment</h1>
 
-        @if (session('data'))
-            @php
-                $users = session('data');
-            @endphp
-            <p>{{ $users }}</p>
-        @else
+        @if(!session('data'))
             <script>
                 window.location = "{{ route('CReturn') }}"
             </script>
         @endif
+
+        <h1>Book Appointment</h1>
 
         <a href="{{ route('choosedatetime', $consultants->Consultant_ID) }}">Go Back</a>
 
         <form action="{{ route('bookappointment.store') }}" method="POST">
             @csrf
 
-            <input type="hidden" name="user_id" value="{{ $users->User_ID }}">
+            <input type="hidden" name="user_id" value="{{ session('data.User_ID') }}">
             <input type="hidden" name="consultant_id" value="{{ $consultants->Consultant_ID }}">
             <input type="hidden" name="status" value="Pending">
 
             <label for="user_name">User Name</label>
-            <input type="text" id="user_name" name="user_name" value="{{ $users->User_Name }}" readonly>
+            <input type="text" id="user_name" name="user_name" value="{{ session('data.User_Name') }}" readonly>
 
             <label for="consultant_name">Consultant Name</label>
             <input type="text" id="consultant_name" name="consultant_name" value="{{ $consultants->Consultant_Name }}" readonly>
@@ -118,7 +114,7 @@
             <label for="user_information">User Information</label>
             <input type="text" id="user_information" name="user_information" required>
 
-            <label for="notes">Notes</label>
+            <label for="notes">Notes (Optional)</label>
             <textarea id="notes" name="notes" rows="4" cols="50">{{ old('notes') }}</textarea>
 
             <button type="submit">Book Appointment</button>
