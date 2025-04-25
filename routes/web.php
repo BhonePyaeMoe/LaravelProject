@@ -117,7 +117,6 @@ Route::get('/CReturn', [AuthController::class, 'Creturn'])->name('CReturn');
 // For Customer
 Route::get('/chooseconsultant', [AppointmentController::class, 'showconsultant'])->name('chooseconsultant');
 Route::get('/choosedatetime/{id}', [AppointmentController::class, 'showdatetime'])->name('choosedatetime');
-Route::get('/bookappointment/{id1}/{id2}/{date}', [AppointmentController::class, 'showappointment'])->name('bookappointment');
+Route::get('/bookappointment/{id1}/{id2}/{date}', [AppointmentController::class, 'checkvalid'])->name('bookappointment');
 Route::post('/bookappointment/store', [AppointmentController::class, 'storeappointment'])->name('bookappointment.store');
-
 Route::get('/history/{userid}', [AppointmentController::class, 'showappointmentlist'])->name('history');

@@ -70,13 +70,36 @@ class AppointmentController extends Controller
 
         return view('Customer.choosedatetime', compact('workdates', 'workschedules'));
     }
-    public function showappointment($id1, $id2, $date)
+    // public function showappointment($id1, $id2, $date)
+    // {
+    //     $schedules = Schedule::find($id1);
+    //     $consultants = Consultant::find($id2);
+    //     $dates = Date::where('Date', $date)->first();
+
+    //     return view('Customer.bookappointment', compact('consultants', 'schedules', 'dates'));
+    // }
+
+    public function checkvalid($id1, $id2, $date)
     {
         $schedules = Schedule::find($id1);
         $consultants = Consultant::find($id2);
         $dates = Date::where('Date', $date)->first();
+        $appointment = Appointment::all();
 
-        return view('Customer.bookappointment', compact('consultants', 'schedules', 'dates'));
+        $check = Appointment::where('Consultant_ID', $id2)
+            ->where('AppointmentDate', $date)
+            ->where('Appointment_StartTime', $schedules->StartTime)
+            ->where('Appointment_EndTime', $schedules->EndTime)
+            ->first();
+
+
+        if ($check) {
+            return redirect()->route('choosedatetime', ['id' => $id2])->with('error', 'This time slot is already booked.');
+        }
+        else {
+            return view('Customer.bookappointment', compact('consultants', 'schedules', 'dates', 'check'));
+        }
+        
     }
 
     public function storeappointment(Request $request)
