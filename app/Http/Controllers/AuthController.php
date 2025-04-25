@@ -85,6 +85,7 @@ class AuthController extends Controller
 
     public function Areturn()
     {
+        session()->forget('data');
         return redirect()->route('login')->with('error', 'You are not authorized to access this page.');
     }
 }
