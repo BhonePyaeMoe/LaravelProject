@@ -20,7 +20,6 @@
             
             <div class="Home_text">
                 <h1>Welcome to NovaBright</h1>
-                <p>{{session('data')}}</p>
                 <p>Your success is our priority. Let us help you achieve your business goals with our expert consultancy services.</p>
             </div>
         </div>

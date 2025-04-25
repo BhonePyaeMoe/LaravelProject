@@ -47,7 +47,7 @@
                                 <td>{{ $user->User_ID }}</td>
                                 <td>{{ $user->User_Name }}</td>
                                 <td>{{ $user->User_Email }}</td>
-                                <td>{{ $user->User_Age ?? 'N/A' }}</td>
+                                <td>{{ $user->User_Age ?? '-' }}</td>
                                 <td>{{ $user->User_Phone }}</td>
                                 <td>{{ $user->TypeName }}</td>
                                 <td>

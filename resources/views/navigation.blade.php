@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="{{ asset('Navigation/navigation.css') }}">
 </head>
 <body>
+
+    @if (session('data.Type_ID') == '1' || session('data.Type_ID') == '2')
+    <script>
+        window.location = "{{ route('AReturn') }}"
+    </script>
+    @endif
+
     <nav class="desktop_nav">
         <div class="logo">
             <a href="{{ route('home') }}"><img src="{{ asset('Images/Logo.png') }}" alt="NovaBright Logo"></a>
