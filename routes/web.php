@@ -45,7 +45,7 @@ Route::post('/login/post', [AuthController::class, 'checkUser'])->name('login.po
 Route::post('/login/register', [AuthController::class, 'Register'])->name('login.register');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('Dashboard');
 })->name('dashboard');
 
 Route::get('/scheduleassign', [ScheduleAssignController::class, 'index'])->name('scheduleassign');
