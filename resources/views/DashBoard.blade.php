@@ -103,7 +103,6 @@
                         backgroundColor: 'rgba(255, 99, 132, 0.2)', // Background color for line fill
                         borderColor: 'rgba(255, 99, 132, 1)', // Border color for line
                         borderWidth: 2, // Border width for line
-                        tension: 0.4 // Smooth curve for the line
                       }]
                     },
                     options: {
