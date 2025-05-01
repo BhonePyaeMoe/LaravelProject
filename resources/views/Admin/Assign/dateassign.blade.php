@@ -31,7 +31,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>WorkDate ID</th>
+                            <th>No</th>
                             <th>Consultant Name</th>
                             <th>Date</th>
                             <th>Day of The Week</th>
@@ -39,9 +39,15 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($workdates->isEmpty())
+                            <tr>
+                                <td colspan="5" style="text-align: center;">No work dates found.</td>
+                            </tr>
+                        @endif
                         @foreach($workdates as $workdate)
                         <tr>
-                            <td>{{ $workdate->WorkDate_ID }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $workdate->consultant->Consultant_Name }}</td>
                             <td>{{ $workdate->date->Date }}</td>
                             <td>{{ $workdate->date->Day }}</td>

@@ -41,16 +41,22 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Date ID</th>
+                            <th>No</th>
                             <th>Date</th>
                             <th>Day</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($dates->isEmpty())
+                            <tr>
+                                <td colspan="4" style="text-align: center;">No dates found.</td>
+                            </tr>
+                        @endif
                         @foreach($dates as $date)
                             <tr>
-                                <td>{{ $date->Date_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $date->Date }}</td>
                                 <td>{{ $date->Day }}</td>
                                 <td>

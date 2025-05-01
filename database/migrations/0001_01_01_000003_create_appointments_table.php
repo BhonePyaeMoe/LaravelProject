@@ -21,7 +21,7 @@ return new class extends Migration
             $table->time('Appointment_EndTime');
             $table->date('AppointmentDate');
             $table->text('User_Information');
-            $table->text('Status');
+            $table->text('Notes')->nullable();
             $table->foreign('User_ID')->references('User_ID')->on('users')->onDelete('cascade');
             $table->foreign('Consultant_ID')->references('Consultant_ID')->on('consultants')->onDelete('cascade');
             $table->timestamps();

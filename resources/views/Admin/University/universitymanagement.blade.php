@@ -31,15 +31,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>University ID</th>
+                            <th>No</th>
                             <th>University Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($universities->isEmpty())
+                            <tr>
+                                <td colspan="3" style="text-align: center;">No universities found.</td>
+                            </tr>
+                        @endif
                         @foreach($universities as $university)
                             <tr>
-                                <td>{{ $university->University_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $university->University_Name }}</td>
                                 <td>
                                     <a href="{{ route('university.edit', $university->University_ID) }}" class="btn btn-primary">Update</a>

@@ -20,6 +20,11 @@ class ScheduleController extends Controller
 
     public function store(Request $request)
     {
+        $alreadyExist = Schedule::where('StartTime', $request->StartTime)->where('EndTime', $request->EndTime)->first();
+        if ($alreadyExist) {
+            return redirect()->route('schedulemanagement')->with('error', 'Schedule already exists.');
+        }
+
         $schedule = new Schedule();
         $schedule->StartTime = $request->input('StartTime');
         $schedule->EndTime = $request->input('EndTime');
@@ -36,12 +41,17 @@ class ScheduleController extends Controller
 
     public function update(Request $request, $id)
     {
+        $alreadyExist = Schedule::where('StartTime', $request->StartTime)->where('EndTime', $request->EndTime)->where('Schedule_ID', '!=', $id)->first();
+        if ($alreadyExist) {
+            return redirect()->route('schedulemanagement')->with('error', 'Schedule already exists.');
+        }
+
         $schedule = Schedule::findOrFail($id);
         $schedule->StartTime = $request->input('StartTime');
         $schedule->EndTime = $request->input('EndTime');
         $schedule->save();
 
-        return redirect()->route('schedulemanagement') ->with('success', 'Schedule updated successfully.');
+        return redirect()->route('schedulemanagement')->with('success', 'Schedule updated successfully.');
     }
 
     public function destroy($id)

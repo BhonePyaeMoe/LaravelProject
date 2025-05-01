@@ -98,7 +98,7 @@
                     data: {
                       labels: appointmentLabels, // Dynamic labels from session data
                       datasets: [{
-                        label: 'Appointments by Month', // Dataset label
+                        label: 'Appointments by Date', // Dataset label
                         data: appointmentData, // Dynamic data values from session data
                         backgroundColor: 'rgba(255, 99, 132, 0.2)', // Background color for line fill
                         borderColor: 'rgba(255, 99, 132, 1)', // Border color for line

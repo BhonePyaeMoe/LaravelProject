@@ -33,6 +33,14 @@ class CountryAssignController extends Controller
         ]);
 
         try {
+
+            $alreadyExist = ConsultingCountry::where('Consultant_ID', $request->Consultant_ID)
+                ->where('Country_ID', $request->Country_ID)
+                ->first();
+            if ($alreadyExist) {
+                return redirect()->route('countryassign')->with('error', 'Country already assigned.');
+            }
+
             ConsultingCountry::create([
                 'Consultant_ID' => $request->Consultant_ID,
                 'Country_ID' => $request->Country_ID,
@@ -59,6 +67,14 @@ class CountryAssignController extends Controller
             'Consultant_ID' => 'required|exists:consultants,Consultant_ID',
             'Country_ID' => 'required|exists:countries,Country_ID',
         ]);
+
+        $alreadyExist = ConsultingCountry::where('Consultant_ID', $request->Consultant_ID)
+            ->where('Country_ID', $request->Country_ID)
+            ->where('ConsultingCountry_ID', '!=', $id)
+            ->first();
+        if ($alreadyExist) {
+            return redirect()->route('countryassign')->with('error', 'Country already assigned.');
+        }
 
         $consultingCountry = ConsultingCountry::findOrFail($id);
         $consultingCountry->update([

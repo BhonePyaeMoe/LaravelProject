@@ -75,6 +75,28 @@
             background-color: #007bff;
             color: white;
         }
+        #calendar-controls
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #calendar-controls span {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #calendar-controls button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #calendar-controls button:hover {
+            background-color: #0056b3;
+        }
 
     </style>
 
@@ -84,118 +106,149 @@
     <div class="datetime-container">
         <h2>Choose Appointment Date and Time</h2>
 
+        <div id="calendar-controls">
+            <button id="prev-month" style="margin-right: 10px;"> < </button>
+            <span id="current-month"></span>
+            <button id="next-month" style="margin-left: 10px;"> > </button>
+        </div>
+
         <div id="calendar"></div>
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-            const calendar = document.createElement('table');
-            calendar.style.width = '100%';
-            calendar.style.borderCollapse = 'collapse';
+                const calendar = document.createElement('table');
+                calendar.style.width = '100%';
+                calendar.style.borderCollapse = 'collapse';
 
-            const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const headerRow = document.createElement('tr');
+                const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                const headerRow = document.createElement('tr');
 
-            daysOfWeek.forEach(day => {
-                const th = document.createElement('th');
-                th.textContent = day;
-                th.style.border = '1px solid #ddd';
-                th.style.backgroundColor = '#007bff';
-                th.style.color = '#fff';
-                headerRow.appendChild(th);
-            });
+                daysOfWeek.forEach(day => {
+                    const th = document.createElement('th');
+                    th.textContent = day;
+                    th.style.border = '1px solid #ddd';
+                    th.style.backgroundColor = '#007bff';
+                    th.style.color = '#fff';
+                    headerRow.appendChild(th);
+                });
 
-            calendar.appendChild(headerRow);
+                calendar.appendChild(headerRow);
 
-            const availableDates = @json($workdates->dates->pluck('Date'));
+                const availableDates = @json($workdates->dates->pluck('Date'));
 
-            const today = new Date();
-            const currentMonth = today.getMonth();
-            const currentYear = today.getFullYear();
+                const today = new Date();
+                let currentMonth = today.getMonth();
+                let currentYear = today.getFullYear();
 
-            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
-            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+                const calendarContainer = document.getElementById('calendar');
+                const currentMonthSpan = document.getElementById('current-month');
+                const prevMonthButton = document.getElementById('prev-month');
+                const nextMonthButton = document.getElementById('next-month');
+                const hiddendate = document.getElementById('hiddendate');
+                const datetimeContainer = document.getElementById('datetime-container');
 
-            const datetimeContainer = document.getElementById('datetime-container');
-            const hiddendate = document.getElementById('hiddendate');
-            let currentSelectedDate = hiddendate.textContent;
+                function renderCalendar(year, month) {
+                    calendar.innerHTML = '';
+                    calendar.appendChild(headerRow);
 
-            let date = 1;
-            for (let i = 0; i < 6; i++) {
-                const row = document.createElement('tr');
+                    const firstDay = new Date(year, month, 1).getDay();
+                    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-                for (let j = 0; j < 7; j++) {
-                const cell = document.createElement('td');
-                cell.style.border = '1px solid #ddd';
-                cell.style.textAlign = 'center';
-                cell.style.cursor = 'pointer';
+                    currentMonthSpan.textContent = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
 
-                if (i === 0 && j < firstDay) {
-                    cell.textContent = '';
-                } else if (date > daysInMonth) {
-                    break;
-                } else {
-                    const formattedDate = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
-                    if (availableDates.includes(formattedDate)) {
-                    cell.textContent = date;
-                    cell.addEventListener('click', function () {
-                        
-                        const currentSelectedDate = hiddendate.textContent; // Dynamically update the selected date
-                        hiddendate.value = formattedDate;
+                    let date = 1;
+                    for (let i = 0; i < 6; i++) {
+                        const row = document.createElement('tr');
 
-                        const previouslySelectedCell = document.querySelector('td.selected');
-                        if (previouslySelectedCell) {
-                            previouslySelectedCell.classList.remove('selected');
-                            previouslySelectedCell.style.backgroundColor = 'white';
+                        for (let j = 0; j < 7; j++) {
+                            const cell = document.createElement('td');
+                            cell.style.border = '1px solid #ddd';
+                            cell.style.textAlign = 'center';
+                            cell.style.cursor = 'pointer';
+
+                            if (i === 0 && j < firstDay) {
+                                cell.textContent = '';
+                            } else if (date > daysInMonth) {
+                                break;
+                            } else {
+                                const formattedDate = `${year}-${String(month + 1).padStart(2, '0')}-${String(date).padStart(2, '0')}`;
+                                if (availableDates.includes(formattedDate) && new Date(formattedDate) > today) {
+                                    cell.textContent = date;
+                                    cell.addEventListener('click', function () {
+                                        const currentSelectedDate = hiddendate.value;
+                                        hiddendate.value = formattedDate;
+
+                                        const previouslySelectedCell = document.querySelector('td.selected');
+                                        if (previouslySelectedCell) {
+                                            previouslySelectedCell.classList.remove('selected');
+                                            previouslySelectedCell.style.backgroundColor = 'white';
+                                        }
+                                        cell.classList.add('selected');
+                                        cell.style.backgroundColor = '#007bff';
+
+                                        if (currentSelectedDate === formattedDate) {
+                                            datetimeContainer.style.display = datetimeContainer.style.display == 'none' ? 'block' : 'none';
+                                        } else {
+                                            datetimeContainer.style.display = 'block';
+                                            
+                                        }
+                                    });
+                                } else {
+                                    cell.textContent = date;
+                                    cell.style.color = '#ccc';
+                                }
+                                date++;
+                            }
+
+                            row.appendChild(cell);
                         }
 
-                        cell.classList.add('selected');
-                        cell.style.backgroundColor = '#007bff';
+                        calendar.appendChild(row);
 
-                        if (currentSelectedDate === formattedDate) {
-                            datetimeContainer.style.display = datetimeContainer.style.display == 'none' ? 'block' : 'none';
-                        } else {
-                            datetimeContainer.style.display = 'block';
+                        if (date > daysInMonth) {
+                            break;
                         }
-                    });
-                    } else {
-                    cell.textContent = date;
-                    cell.style.color = '#ccc';
                     }
-                    date++;
                 }
 
-                row.appendChild(cell);
-                }
+                prevMonthButton.addEventListener('click', function () {
+                    currentMonth--;
+                    if (currentMonth < 0) {
+                        currentMonth = 11;
+                        currentYear--;
+                    }
+                    renderCalendar(currentYear, currentMonth);
+                });
 
-                calendar.appendChild(row);
+                nextMonthButton.addEventListener('click', function () {
+                    currentMonth++;
+                    if (currentMonth > 11) {
+                        currentMonth = 0;
+                        currentYear++;
+                    }
+                    renderCalendar(currentYear, currentMonth);
+                });
 
-                if (date > daysInMonth) {
-                break;
-                }
-            }
-
-            document.getElementById('calendar').appendChild(calendar);
+                renderCalendar(currentYear, currentMonth);
+                calendarContainer.appendChild(calendar);
             });
         </script>
 
-        <div id="datetime-container" class="inv-container" style="display :none;">
-
-            <h3> Please Select Appointment Time</h3>
+        <div id="datetime-container" class="inv-container" style="display: none;">
+            <h3>Please Select Appointment Time</h3>
             <input type="hidden" id="hiddendate" name="hiddendate" value="" readonly>
 
             <div class="schedule-container">
-            @foreach ($workschedules->schedules as $schedule)
-                <div class="small-container">
-                    <a href="{{ route('bookappointment', ['id1' => $schedule->Schedule_ID, 'id2' => $workdates->Consultant_ID, 'date' => 'date']) }}" 
-                        onclick="this.href=this.href.replace('date', document.getElementById('hiddendate').value)"> 
-                        {{ \Carbon\Carbon::parse($schedule->StartTime)->format('h:i A') }} - {{ \Carbon\Carbon::parse($schedule->EndTime)->format('h:i A') }}
-                    </a>
-                </div>
-            @endforeach
+                @foreach ($workschedules->schedules as $schedule)
+                    <div class="small-container">
+                        <a href="{{ route('bookappointment', ['id1' => $schedule->Schedule_ID, 'id2' => $workdates->Consultant_ID, 'date' => 'date']) }}" 
+                            onclick="this.href=this.href.replace('date', document.getElementById('hiddendate').value)"> 
+                            {{ \Carbon\Carbon::parse($schedule->StartTime)->format('h:i A') }} - {{ \Carbon\Carbon::parse($schedule->EndTime)->format('h:i A') }}
+                        </a>
+                    </div>
+                @endforeach
             </div>
-
         </div>
-
     </div>
     
 </body>

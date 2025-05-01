@@ -40,16 +40,22 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Schedule ID</th>
+                            <th>No</th>
                             <th>Start Time</th>
                             <th>End Time</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($schedules->isEmpty())
+                            <tr>
+                                <td colspan="4" style="text-align: center;">No schedules found.</td>
+                            </tr>
+                        @endif
                         @foreach($schedules as $schedule)
                             <tr>
-                                <td>{{ $schedule->Schedule_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $schedule->StartTime }}</td>
                                 <td>{{ $schedule->EndTime }}</td>
                                 <td>

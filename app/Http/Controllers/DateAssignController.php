@@ -33,6 +33,13 @@ class DateAssignController extends Controller
             'Date_ID' => 'required|exists:dates,Date_ID',
         ]);
 
+        $alreadyExist = WorkDates::where('Consultant_ID', $request->Consultant_ID)
+            ->where('Date_ID', $request->Date_ID)
+            ->first();
+        if ($alreadyExist) {
+            return redirect()->route('dateassign')->with('error', 'Date already assigned.');
+        }
+
         try {
             WorkDates::create([
                 'Consultant_ID' => $request->Consultant_ID,
@@ -60,6 +67,14 @@ class DateAssignController extends Controller
             'Consultant_ID' => 'required|exists:consultants,Consultant_ID',
             'Date_ID' => 'required|exists:dates,Date_ID',
         ]);
+
+        $alreadyExist = WorkDates::where('Consultant_ID', $request->Consultant_ID)
+            ->where('Date_ID', $request->Date_ID)
+            ->where('WorkDate_ID', '!=', $id)
+            ->first();
+        if ($alreadyExist) {
+            return redirect()->route('dateassign')->with('error', 'Date already assigned.');
+        }
 
         $workDate = WorkDates::findOrFail($id); // Use $id to find the correct WorkDate
         $workDate->update([

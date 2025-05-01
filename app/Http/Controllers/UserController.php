@@ -33,6 +33,11 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        $alreadyExist = User::where('User_Email', $request->User_Email)->first();
+        if ($alreadyExist) {
+            return redirect()->route('usermanagement')->with('error', 'User already exists.');
+        }
+
         // Validate the request
         $request->validate([
             'User_Name' => 'required|string|max:255',
@@ -66,6 +71,11 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $alreadyExist = User::where('User_Email', $request->User_Email)->where('User_ID', '!=', $id)->first();
+        if ($alreadyExist) {
+            return redirect()->route('usermanagement')->with('error', 'User already exists.');
+        }
+
         // Validate the request
         $request->validate([
             'User_Name' => 'required|string|max:255',

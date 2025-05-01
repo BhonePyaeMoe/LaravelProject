@@ -31,7 +31,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Consultant ID</th>
+                            <th>No</th>
                             <th>Consultant Name</th>
                             <th>Profile</th>
                             <th>Experience</th>
@@ -40,9 +40,15 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($consultants->isEmpty())
+                            <tr>
+                                <td colspan="6" style="text-align: center;">No consultants found.</td>
+                            </tr>
+                        @endif
                         @foreach($consultants as $consultant)
                             <tr>
-                                <td>{{ $consultant->Consultant_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $consultant->Consultant_Name }}</td>
                                 <td><img src="{{ $consultant->Profile }}" alt="User Image"></td>
                                 <td>{{ $consultant->Experience }}</td>

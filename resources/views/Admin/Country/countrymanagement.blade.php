@@ -39,15 +39,21 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Country ID</th>
+                            <th>No</th>
                             <th>Country Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($countries->isEmpty())
+                            <tr>
+                                <td colspan="3" style="text-align: center;">No countries found.</td>
+                            </tr>
+                        @endif
                         @foreach($countries as $country)
                             <tr>
-                                <td>{{ $country->Country_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $country->Country_Name }}</td>
                                 <td>
                                     <a href="{{ route('country.edit', $country->Country_ID) }}" class="btn btn-primary">Update</a>

@@ -16,6 +16,11 @@ class CountryController extends Controller
 
     public function store(Request $request)
     {
+        $alreadyExist = Country::where('Country_Name', $request->Country_Name)->first();
+        if ($alreadyExist) {
+            return redirect()->route('countrymanagement')->with('error', 'Country already exists.');
+        }
+
         $request->validate([
             'Country_Name' => 'required|string|max:255',
         ]);
@@ -33,6 +38,11 @@ class CountryController extends Controller
 
     public function update(Request $request, $id)
     {
+        $alreadyExist = Country::where('Country_Name', $request->Country_Name)->where('Country_ID', '!=', $id)->first();
+        if ($alreadyExist) {
+            return redirect()->route('countrymanagement')->with('error', 'Country already exists.');
+        }
+
         $request->validate([
             'Country_Name' => 'required|string|max:255',
         ]);

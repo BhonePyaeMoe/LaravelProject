@@ -26,6 +26,12 @@ class ConsultantController extends Controller
 
     public function store(Request $request)
     {
+
+        $alreadyExist = Consultant::where('Consultant_Email', $request->Consultant_Email)->first();
+        if ($alreadyExist) {
+            return redirect()->route('consultantmanagement')->with('error', 'Consultant already exist.');
+        }
+
         $request->validate([
             'Consultant_Name' => 'required|string|max:255',
             'Profile' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
@@ -53,6 +59,11 @@ class ConsultantController extends Controller
 
     public function update(Request $request, $id)
     {
+        $alreadyExist = Consultant::where('Consultant_Email', $request->Consultant_Email)->where('Consultant_ID', '!=', $id)->first();
+        if ($alreadyExist) {
+            return redirect()->route('consultantmanagement')->with('error', 'Consultant already exist.');
+        }
+
         $request->validate([
             'Consultant_Name' => 'required|string|max:255',
             'Profile' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',

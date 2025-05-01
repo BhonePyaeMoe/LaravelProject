@@ -120,3 +120,5 @@ Route::get('/choosedatetime/{id}', [AppointmentController::class, 'showdatetime'
 Route::get('/bookappointment/{id1}/{id2}/{date}', [AppointmentController::class, 'checkvalid'])->name('bookappointment');
 Route::post('/bookappointment/store', [AppointmentController::class, 'storeappointment'])->name('bookappointment.store');
 Route::get('/history/{userid}', [AppointmentController::class, 'showappointmentlist'])->name('history');
+Route::post('/cancelappointment/{id}', [AppointmentController::class, 'cancelappointment'])->name('cancelappointment');
+Route::post('/changedate/{id}', [AppointmentController::class, 'changedate'])->name('changedate');

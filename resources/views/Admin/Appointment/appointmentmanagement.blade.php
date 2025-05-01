@@ -33,7 +33,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>No</th>
                             <th>Consultant Name</th>
                             <th>Customer Name</th>
                             <th>Date</th>
@@ -44,9 +44,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if($appointments->isEmpty())
+                            <tr>
+                                <td colspan="8" style="text-align: center;">No appointments found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($appointments as $appointment)
                             <tr>
-                                <td>{{ $appointment->Appointment_ID}}</td>
+                                <td>{{ $loop->iteration}}</td>
                                 <td> <img src="{{ $appointment->Consultant->Profile}}"> <br>{{ $appointment->Consultant->Consultant_Name}}</td>
                                 <td> {{ $appointment->User->User_Name}}</td>
                                 <td>{{ $appointment->AppointmentDate}}</td>

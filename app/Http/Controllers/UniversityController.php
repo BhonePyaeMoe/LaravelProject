@@ -18,6 +18,11 @@ class UniversityController extends Controller
     
     public function store(Request $request)
     {
+        $alreadyExist = University::where('University_Name', $request->University_Name)->first();
+        if ($alreadyExist) {
+            return redirect()->route('universitymanagement')->with('error', 'University already exists.');
+        }
+
         $request->validate([
             'University_Name' => 'required|string|max:255',
             'Country_ID' => 'required|exists:countries,Country_ID',
@@ -37,6 +42,11 @@ class UniversityController extends Controller
 
     public function update(Request $request, $id)
     {
+        $alreadyExist = University::where('University_Name', $request->University_Name)->where('University_ID', '!=', $id)->first();
+        if ($alreadyExist) {
+            return redirect()->route('universitymanagement')->with('error', 'University already exists.');
+        }
+
         $request->validate([
             'University_Name' => 'required|string|max:255',
             'Country_ID' => 'required|exists:countries,Country_ID',

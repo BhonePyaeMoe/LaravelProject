@@ -32,7 +32,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>User ID</th>
+                            <th>No</th>
                             <th>User Name</th>
                             <th>User Email</th>
                             <th>User Age</th>
@@ -44,7 +44,7 @@
                     <tbody>
                         @foreach($users as $user)
                             <tr>
-                                <td>{{ $user->User_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->User_Name }}</td>
                                 <td>{{ $user->User_Email }}</td>
                                 <td>{{ $user->User_Age ?? '-' }}</td>

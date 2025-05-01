@@ -32,6 +32,13 @@ class ScheduleAssignController extends Controller
             'Schedule_ID' => 'required|exists:schedules,Schedule_ID',
         ]);
 
+        $alreadyExist = WorkSchedules::where('Consultant_ID', $request->Consultant_ID)
+            ->where('Schedule_ID', $request->Schedule_ID)
+            ->first();
+        if ($alreadyExist) {
+            return redirect()->route('scheduleassign')->with('error', 'Schedule already assigned.');
+        }
+
         try {
             WorkSchedules::create([
                 'Consultant_ID' => $request->Consultant_ID,
@@ -58,6 +65,14 @@ class ScheduleAssignController extends Controller
             'Consultant_ID' => 'required|exists:consultants,Consultant_ID',
             'Schedule_ID' => 'required|exists:schedules,Schedule_ID',
         ]);
+
+        $alreadyExist = WorkSchedules::where('Consultant_ID', $request->Consultant_ID)
+            ->where('Schedule_ID', $request->Schedule_ID)
+            ->where('WorkSchedule_ID', '!=', $id)
+            ->first();
+        if ($alreadyExist) {
+            return redirect()->route('scheduleassign')->with('error', 'Schedule already assigned.');
+        }
 
         $workSchedule = WorkSchedules::findOrFail($id);
         $workSchedule->update([

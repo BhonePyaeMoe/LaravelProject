@@ -31,7 +31,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>WorkSchedule ID</th>
+                            <th>No</th>
                             <th>Consultant Name</th>
                             <th>StartTime</th>
                             <th>EndTime</th>
@@ -39,9 +39,15 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($workschedules->isEmpty())
+                            <tr>
+                                <td colspan="5" style="text-align: center;">No work schedules found.</td>
+                            </tr>
+                        @endif
                         @foreach($workschedules as $workschedule)
                             <tr>
-                                <td>{{ $workschedule->WorkSchedule_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $workschedule->consultant->Consultant_Name }}</td>
                                 <td>{{ \Carbon\Carbon::parse($workschedule->schedule->StartTime)->format('H:i') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($workschedule->schedule->EndTime)->format('H:i') }}</td>

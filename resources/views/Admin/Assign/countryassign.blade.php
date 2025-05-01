@@ -31,16 +31,23 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>ConsultingCountry ID</th>
+                            <th>No</th>
                             <th>Consultant Name</th>
                             <th>Country Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($consultingCountries->isEmpty())
+                            <tr>
+                                <td colspan="4" style="text-align: center;">No consulting countries found.</td>
+                            </tr>
+                        @endif
+
                         @foreach($consultingCountries as $consultingCountry)
                             <tr>
-                                <td>{{ $consultingCountry->Consultingcountry_ID }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $consultingCountry->consultant->Consultant_Name }}</td>
                                 <td>{{ $consultingCountry->country->Country_Name }}</td>
                                 <td>

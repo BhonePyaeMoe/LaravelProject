@@ -20,12 +20,17 @@ class DateController extends Controller
 
     public function store(Request $request)
     {
+        $alreadyExist = Date::where('Date', $request->Date)->first();
+        if ($alreadyExist) {
+            return redirect()->route('datemanagement')->with('error', 'Date already exists.');
+        }
+
         $date = new Date();
         $date->Date = $request->input('Date');
         $date->Day = $request->input('Day');
         $date->save();
 
-        return redirect()->route('datemanagement') ->with('success', 'Date created successfully.');
+        return redirect()->route('datemanagement')->with('success', 'Date created successfully.');
     }
 
     public function edit($id)
@@ -36,12 +41,17 @@ class DateController extends Controller
 
     public function update(Request $request, $id)
     {
+        $alreadyExist = Date::where('Date', $request->Date)->where('Date_ID', '!=', $id)->first();
+        if ($alreadyExist) {
+            return redirect()->route('datemanagement')->with('error', 'Date already exists.');
+        }
+
         $date = Date::findOrFail($id);
         $date->Date = $request->input('Date');
         $date->Day = $request->input('Day');
         $date->save();
 
-        return redirect()->route('datemanagement') ->with('success', 'Date updated successfully.');
+        return redirect()->route('datemanagement')->with('success', 'Date updated successfully.');
     }
 
     public function destroy($id)

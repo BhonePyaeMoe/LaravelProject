@@ -88,10 +88,14 @@ class AppointmentController extends Controller
 
         $check = Appointment::where('Consultant_ID', $id2)
             ->where('AppointmentDate', $date)
+            ->where('Status', 'Active')
             ->where('Appointment_StartTime', $schedules->StartTime)
             ->where('Appointment_EndTime', $schedules->EndTime)
             ->first();
 
+        if ($date < now()->toDateString()) {
+            return redirect()->route('choosedatetime', ['id' => $id2])->with('error', 'The appointment date has already passed.');
+        }
 
         if ($check) {
             return redirect()->route('choosedatetime', ['id' => $id2])->with('error', 'This time slot is already booked.');
@@ -113,7 +117,7 @@ class AppointmentController extends Controller
             'appointment_endtime' => 'required',
             'topic' => 'required|string|max:255',
             'user_information' => 'required|string|max:255',
-            'notes' => 'nullable',
+            'notes' => 'nullable|string',
             'consultant_name' => 'string',
         ]);
 
@@ -140,11 +144,17 @@ class AppointmentController extends Controller
         }
 
         $appointments = Appointment::where('User_ID', $userid)->with(['consultant'])->get();
-        if ($appointments->isEmpty()) {
-            return redirect()->route('home')->with('error', 'No appointments found.');
-        }
-        
+
         return view('Customer.history', compact('appointments'));
+    }
+
+    public function cancelappointment($id)
+    {
+        $appointment = Appointment::findOrFail($id);
+        $appointment->Status = 'Cancelled';
+        $appointment->save();
+
+        return redirect()->route('history', ['userid' => $appointment->User_ID])->with('success', 'Appointment cancelled successfully.');
     }
 
 }
