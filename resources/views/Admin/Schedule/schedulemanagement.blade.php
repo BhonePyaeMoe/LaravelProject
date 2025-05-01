@@ -76,12 +76,26 @@
                 <h2>Add New Schedule</h2>
                 <form action="{{ route('schedule.store') }}" method="POST">
                     @csrf
-                    <input type="time" name="StartTime" required>
-                    <input type="time" name="EndTime" required>
+                    <input type="time" class="stime" onchange="calculate()" name="StartTime" required step="3600">
+                    <input type="time" class="etime" name="EndTime" required readonly>
                     <button type="submit" class="btn btn-success">Add Schedule</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        function calculate(){
+            var start = document.querySelector('.stime').value;
+            var end = document.querySelector('.etime').value;
+            
+            let startTime = new Date(`1970-01-01T${start}:00`);
+            startTime.setMinutes(startTime.getMinutes() + 40);
+            let formattedEndTime = startTime.toTimeString().slice(0, 5);
+            document.querySelector('.etime').value = formattedEndTime;
+        }
+    </script>
+
+
 </body>
 </html>

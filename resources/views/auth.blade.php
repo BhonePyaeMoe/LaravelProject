@@ -13,7 +13,7 @@
 
     @include('errorhandling')
     
-    <nav class="desktop_nav">
+    <nav class="auth_mobile_nav">
 
         <ul>
 
@@ -23,7 +23,7 @@
     </nav>
 
     <div class="auth">
-        <div class="shader">
+        <div class="shader desktop">
             <div class="login-side">
                 <h2>Sign In</h2>
                 <form action="{{ route('login.post') }}" method="POST">
@@ -85,6 +85,8 @@
             </div>
         </div>
     </div>
+
+    @include('mobileauth')
 
     <script src="{{ asset('Auth/auth.js') }}"></script>
 </body>

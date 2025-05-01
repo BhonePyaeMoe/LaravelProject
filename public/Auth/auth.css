@@ -34,7 +34,7 @@ body {
     position: relative;
     width: calc(100% - 600px);
     height: calc(100% - 180px);
-    padding: 0px 30px;
+    padding-top: 20px;
 }
 .form_image {
     background-color: #007bff;
@@ -158,4 +158,64 @@ h2 {
 
 .btn-primary:hover {
     background-color: #0056b3;
+}
+
+.mobile {
+    padding-top: 20px;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        display: none;
+    }
+    .shader {
+        width: 100%;
+    }
+    .mobile {
+        display: block;
+        position: relative;
+        height: 150vh;
+    }
+    .mobile > .login-mobile-side,
+    .mobile > .signup-mobile-side {
+        position: absolute;
+        padding: 20px;
+        width: 100%;
+    }
+    .login-mobile-side {
+        display: block;
+    }
+    .signup-mobile-side {
+        display: none;
+    }
+    .login-mobile-side > div,
+    .signup-mobile-side > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+    }
+    .login-mobile-side > div > .switch,
+    .signup-mobile-side > div > .switch {
+        margin: 5px 10px;
+        letter-spacing: 1px;
+        padding: 5px 10px;
+        background-color: transparent;
+        border: 1px solid #007bff;
+        color: #007bff;
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+            "Lucida Sans", Arial, sans-serif;
+        border-radius: 30px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .login-mobile-side > div > .switch:hover,
+    .signup-mobile-side > div > .switch:hover {
+        background-color: #007bff;
+        color: white;
+    }
+    ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
 }

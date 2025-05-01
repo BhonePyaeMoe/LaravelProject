@@ -72,7 +72,7 @@
                 <form action="{{ route('consultant.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="Consultant_Name" placeholder="Consultant Name" required>
-                    <input type="file" name="Profile">
+                    <input type="file" name="Profile" required>
                     <input type="text" name="Experience" placeholder="Experience" required>
                     <input type="email" name="Consultant_Email" placeholder="Email Address" required>
                     <button type="submit" class="btn btn-success">Add Consultant</button>

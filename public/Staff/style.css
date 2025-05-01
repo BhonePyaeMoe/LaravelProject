@@ -282,3 +282,9 @@ option {
 .update_topic {
     padding: 30px 100px;
 }
+
+@media screen and (max-width: 768px) {
+    .table_display {
+        padding: 0px;
+    }
+}

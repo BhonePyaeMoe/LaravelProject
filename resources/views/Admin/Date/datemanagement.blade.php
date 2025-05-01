@@ -77,8 +77,8 @@
                 <h2>Add New Date</h2>
                 <form action="{{ route('date.store') }}" method="POST">
                     @csrf
-                    <input type="text" id="datePicker" name="Date" required>
-                    <input type="text" name="Day" required readonly>
+                    <input type="text" id="datePicker" name="Date" placeholder="Date" required>
+                    <input type="text" name="Day" placeholder="Day" required readonly>
                     <button type="submit" class="btn btn-success">Add Date</button>
                 </form>
             </div>
