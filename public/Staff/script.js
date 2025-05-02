@@ -25,3 +25,15 @@ if (window.innerWidth <= 768) {
     btn.innerHTML = "Search";
     ref.innerHTML = "Refresh";
 }
+
+function close_mobile() {
+    const mobile_control = document.querySelector(".mbar span");
+    const mobile_nav = document.querySelector(".mobile_admin");
+    mobile_nav.style.display = "none";
+}
+
+function showadminnav() {
+    const mobile_control = document.querySelector(".mbar span");
+    const mobile_nav = document.querySelector(".mobile_admin");
+    mobile_nav.style.display = "block";
+}

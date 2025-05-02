@@ -242,6 +242,9 @@
 .admin_menu li .fa {
     padding-right: 10px;
 }
+.close_mobile {
+    cursor: pointer;
+}
 
 @media screen and (max-width: 1200px) {
     .desktop {
@@ -261,5 +264,13 @@
     }
     .main {
         margin-left: 0px;
+    }
+    .mobile_admin {
+        display: none;
+        position: absolute;
+        width: 100%;
+    }
+    admin_menu {
+        align-items: center;
     }
 }

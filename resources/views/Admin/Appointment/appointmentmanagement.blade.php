@@ -16,8 +16,8 @@
     <div class="container">
         <div class="main">
 
-            <div class="user_search">
-                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
+            <div class="user_search mbar">
+                <span onclick="showadminnav()"> <i class="fa-solid fa-bars"></i> </span>
                 <form action="{{ route('appointmentmanagement') }}" method="GET" style="display: flex; gap: 10px;">
                     <input type="text" name="search" placeholder="Search by customer name" value="{{ request('search') }}">
                     <button type="submit">Search</button>
@@ -80,5 +80,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('Staff/script.js') }}"></script>
 </body>
 </html>

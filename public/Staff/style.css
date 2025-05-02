@@ -289,6 +289,10 @@ option {
     font-size: 18px;
 }
 
+.mbar span {
+    display: none;
+}
+
 .update_topic {
     padding: 30px 100px;
 }
@@ -314,8 +318,13 @@ option {
     .add-user {
         margin: 0px;
     }
-    .action {
+    .actiontd {
+        padding: 40px;
         display: flex;
         gap: 10px;
+    }
+    .mbar span {
+        display: block;
+        cursor: pointer;
     }
 }

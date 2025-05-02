@@ -31,7 +31,7 @@
         </ul>
     </aside>
 
-    <aside class="sidebar mobile">
+    <aside class="sidebar mobile_admin">
         <a href="{{ route('dashboard') }}"><img src="{{ asset('Images/Logo2.png') }}" alt="NovaBright Logo"></a>
         <ul class="admin_menu">
             <li><a href="{{ route('dashboard') }}"> <i class="fa fa-solid fa-house"></i> Home </a></li>
@@ -43,11 +43,13 @@
             <li><a href="{{ route('consultantmanagement') }}"> <i class="fa fa-solid fa-user-tie"></i> Consultant </a></li>
             <li><a href="{{ route('appointmentmanagement') }}"> <i class="fa fa-solid fa-book"></i> Appointment </a> </li>
             <li><a href="{{ route('logout') }}"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout </a> </li>
+            <li onclick="close_mobile()"><a class="close_mobile"><i class="fa-solid fa-xmark"></i> Close </a></li>
 
         </ul>
     </aside>
 
     
+    <script src="{{ asset('Navigation/Navigation.js') }}"></script>
 
 </body>
 
