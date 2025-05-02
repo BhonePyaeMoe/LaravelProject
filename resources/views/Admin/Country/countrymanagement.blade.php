@@ -17,6 +17,7 @@
         <div class="main">
 
             <div class="user_search">
+                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
                 <form action="{{ route('countrymanagement') }}" method="GET" style="display: flex; gap: 10px;">
                     <input type="text" name="search" placeholder="Search by country name" value="{{ request('search') }}">
                     <button type="submit">Search</button>
@@ -55,7 +56,7 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $country->Country_Name }}</td>
-                                <td>
+                                <td class="action">
                                     <a href="{{ route('country.edit', $country->Country_ID) }}" class="btn btn-primary">Update</a>
                                     <form action="{{ route('country.destroy', $country->Country_ID) }}" method="POST" style="display:inline-block;">
                                         @csrf
@@ -79,5 +80,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('Staff/script.js') }}"></script>
 </body>
 </html>

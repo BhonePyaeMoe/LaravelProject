@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>NovaBright</title>
+    <link rel="shortcut icon" href="{{ asset('Images/Web_logo.jpg') }}" type="image/x-icon">
 </head>
 <body>
 
@@ -101,7 +102,7 @@
     </style>
 
     @include('errorhandling')
-    @include('navigation')
+    @include('Customer.navigation')
 
     <div class="datetime-container">
         <h2>Choose Appointment Date and Time</h2>

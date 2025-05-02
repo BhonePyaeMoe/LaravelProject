@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultancy Company</title>
+    <title>NovaBright</title>
     <link rel="stylesheet" href="{{ asset('Customer/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('Images/Web_logo.jpg') }}" type="image/x-icon">
 </head>
 <body>
 
-    @include('navigation')
+    @include('Customer.navigation')
     @include('errorhandling')
 
     <div class="first_container">

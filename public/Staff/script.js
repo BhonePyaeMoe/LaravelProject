@@ -15,3 +15,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+const btn = document.querySelector(".user_search button[type='submit']");
+const ref = document.querySelector(".user_search form a");
+
+if (window.innerWidth <= 768) {
+    btn.innerHTML = "🔍︎";
+    ref.innerHTML = "⟳";
+} else {
+    btn.innerHTML = "Search";
+    ref.innerHTML = "Refresh";
+}

@@ -19,6 +19,7 @@
         <div class="main">
 
             <div class="user_search">
+                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
                 <form action="{{ route('datemanagement') }}" method="GET" style="display: flex; gap: 10px;">
                     <input type="text" name="search" placeholder="Search by date" value="{{ request('search') }}">
                     <button type="submit">Search</button>
@@ -59,7 +60,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $date->Date }}</td>
                                 <td>{{ $date->Day }}</td>
-                                <td>
+                                <td class="action">
                                     <a href="{{ route('date.edit', $date->Date_ID) }}" class="btn btn-primary">Update</a>
                                     <form action="{{ route('date.destroy', $date->Date_ID) }}" method="POST" style="display:inline-block;">
                                         @csrf
@@ -77,13 +78,14 @@
                 <h2>Add New Date</h2>
                 <form action="{{ route('date.store') }}" method="POST">
                     @csrf
-                    <input type="text" id="datePicker" name="Date" placeholder="Date" required>
-                    <input type="text" name="Day" placeholder="Day" required readonly>
+                    <input type="text" id="datePicker" name="Date" placeholder="Date" value="{{ date('Y-m-d') }}" required>
+                    <input type="text" name="Day" placeholder="Day" value="{{ \Carbon\Carbon::now()->format('l') }}" required readonly>
                     <button type="submit" class="btn btn-success">Add Date</button>
                 </form>
             </div>
         </div>
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             flatpickr("#datePicker", {
@@ -97,5 +99,7 @@
             });
         });
     </script>
+    <script src="{{ asset('Staff/script.js') }}"></script>
+
 </body>
 </html>

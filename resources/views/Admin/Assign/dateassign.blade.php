@@ -17,6 +17,7 @@
         <div class="main">
 
             <div class="user_search">
+                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
                 <form action="{{ route('dateassign') }}" method="GET" style="display: flex; gap: 10px;">
                     <input type="text" name="search" placeholder="Search by consultant name" value="{{ request('search') }}">
                     <button type="submit">Search</button>
@@ -51,7 +52,7 @@
                             <td>{{ $workdate->consultant->Consultant_Name }}</td>
                             <td>{{ $workdate->date->Date }}</td>
                             <td>{{ $workdate->date->Day }}</td>
-                            <td>
+                            <td class="action">
                                 <a href="{{ route('dateassign.edit', $workdate->WorkDate_ID) }}" class="btn btn-primary">Update</a>
                                 <form action="{{ route('dateassign.destroy', $workdate->WorkDate_ID) }}" method="POST" style="display:inline-block;">
                                     @csrf
@@ -105,5 +106,7 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('Staff/script.js') }}"></script>
 </body>
 </html>

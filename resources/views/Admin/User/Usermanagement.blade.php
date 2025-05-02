@@ -18,6 +18,7 @@
         <div class="main">
 
             <div class="user_search">
+                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
                 <form action="{{ route('usermanagement') }}" method="GET" style="display: flex; gap: 10px;">
                     <input type="text" name="search" placeholder="Search by username" value="{{ request('search') }}">
                     <button type="submit">Search</button>
@@ -50,7 +51,7 @@
                                 <td>{{ $user->User_Age ?? '-' }}</td>
                                 <td>{{ $user->User_Phone }}</td>
                                 <td>{{ $user->TypeName }}</td>
-                                <td>
+                                <td class="action">
                                     <a href="{{ route('user.edit', $user->User_ID) }}" class="btn btn-primary">Update</a>
                                     <form action="{{ route('user.destroy', $user->User_ID) }}" method="POST" style="display:inline-block;">
                                         @csrf
@@ -80,5 +81,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="{{ asset('Staff/script.js') }}"></script>
+
 </body>
 </html>

@@ -196,6 +196,11 @@ table td button:hover {
     background-color: #ffffff;
 }
 
+.user_search span {
+    margin-right: auto;
+    font-size: 19px;
+}
+
 .user_search input[type="text"] {
     background-color: #f8faff;
     padding: 10px;
@@ -284,7 +289,28 @@ option {
 }
 
 @media screen and (max-width: 768px) {
+    .user_search {
+        padding: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+    }
+    .user_search input[type="text"] {
+        width: 230px;
+    }
+    .user_search form a {
+        display: flex;
+    }
     .table_display {
-        padding: 0px;
+        overflow-x: auto;
+        padding: 20px;
+    }
+    .add-user {
+        margin: 0px;
+    }
+    .action {
+        display: flex;
+        gap: 10px;
     }
 }

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaBright Navigation</title>
+    <title>NovaBright</title>
     <link rel="stylesheet" href="{{ asset('Navigation/navigation.css') }}">
+    <link rel="shortcut icon" href="{{ asset('Images/Web_logo.jpg') }}" type="image/x-icon">
 </head>
 <body>
 

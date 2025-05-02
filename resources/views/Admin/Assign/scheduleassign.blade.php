@@ -51,7 +51,7 @@
                                 <td>{{ $workschedule->consultant->Consultant_Name }}</td>
                                 <td>{{ \Carbon\Carbon::parse($workschedule->schedule->StartTime)->format('H:i') }}</td>
                                 <td>{{ \Carbon\Carbon::parse($workschedule->schedule->EndTime)->format('H:i') }}</td>
-                                <td>
+                                <td class="action">
                                     <a href="{{ route('scheduleassign.edit', $workschedule->WorkSchedule_ID) }}" class="btn btn-primary">Update</a>
                                     <form action="{{ route('scheduleassign.destroy', $workschedule->WorkSchedule_ID) }}" method="POST" style="display:inline-block;">
                                         @csrf

@@ -17,6 +17,7 @@
         <div class="main">
 
             <div class="user_search">
+                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
                 <form action="{{ route('schedulemanagement') }}" method="GET" style="display: flex; gap: 10px;">
                     <input type="text" name="search" placeholder="Search by schedule ID" value="{{ request('search') }}">
                     <button type="submit">Search</button>
@@ -58,7 +59,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $schedule->StartTime }}</td>
                                 <td>{{ $schedule->EndTime }}</td>
-                                <td>
+                                <td class="action">
                                     <a href="{{ route('schedule.edit', $schedule->Schedule_ID) }}" class="btn btn-primary">Update</a>
                                     <form action="{{ route('schedule.destroy', $schedule->Schedule_ID) }}" method="POST" style="display:inline-block;">
                                         @csrf
@@ -95,7 +96,7 @@
             document.querySelector('.etime').value = formattedEndTime;
         }
     </script>
-
+    <script src="{{ asset('Staff/script.js') }}"></script>
 
 </body>
 </html>
