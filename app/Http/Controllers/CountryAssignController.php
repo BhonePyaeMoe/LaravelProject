@@ -17,14 +17,13 @@ class CountryAssignController extends Controller
                 return $query->whereHas('Consultant', function ($q) use ($search) {
                     $q->where('Consultant_Name', 'like', "%{$search}%");
                 });
-            })->get();
+            })
+            ->orderBy(Consultant::select('Consultant_Name')
+                ->whereColumn('consultants.Consultant_ID', 'consultingcountries.Consultant_ID')) // Corrected table name
+            ->paginate(5);
 
-            $consultingCountries = $consultingCountries->sortBy(function($consultingCountry) {
-                return $consultingCountry->consultant->Consultant_Name;
-            });
-
-            $countries = Country::orderBy('Country_Name')->get();
-            $consultants = Consultant::orderBy('Consultant_Name')->get();
+        $countries = Country::orderBy('Country_Name')->get();
+        $consultants = Consultant::orderBy('Consultant_Name')->get();
 
         return view('Admin.Assign.countryassign', compact('countries', 'consultants', 'consultingCountries'));
     }

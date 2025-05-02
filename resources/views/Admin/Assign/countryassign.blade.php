@@ -63,6 +63,21 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $consultingCountries->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $consultingCountries->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $consultingCountries->lastPage(); $i++)
+                            <li class="{{ $consultingCountries->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $consultingCountries->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $consultingCountries->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $consultingCountries->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <h1 class="update_topic">Assign Consulting Country</h1>

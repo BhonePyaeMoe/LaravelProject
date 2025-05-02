@@ -26,14 +26,12 @@ class AppointmentController extends Controller
                 })->orWhereHas('user', function ($q) use ($search) {
                     $q->where('User_Name', 'like', "%{$search}%");
                 });
-            })->get();
+            })
+            ->orderBy('AppointmentDate')
+            ->orderBy('Appointment_StartTime')
+            ->paginate(5);
 
-
-        $appointments = $appointments->sortBy(function($appointment) {
-            return [$appointment->AppointmentDate, $appointment->Appointment_StartTime];
-        });
-
-        return view('Admin.Appointment.appointmentmanagement', compact('appointments'));    
+        return view('Admin.Appointment.appointmentmanagement', compact('appointments'));
     }
 
     

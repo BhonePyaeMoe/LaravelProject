@@ -19,11 +19,7 @@ class DateAssignController extends Controller
                     $q->where('Consultant_Name', 'like', "%{$search}%");
                 });
             })
-            ->get();
-
-        $workdates = $workdates->sortBy(function($workdate) {
-            return $workdate->date->Date;
-        });
+            ->paginate(5);
 
         $dates = Date::where('Date', '>=', now()->format('Y-m-d'))
             ->orderBy('Date')

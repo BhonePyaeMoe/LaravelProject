@@ -18,7 +18,7 @@ class ScheduleAssignController extends Controller
                     $q->where('Consultant_Name', 'like', "%{$search}%");
                 });
             })
-            ->get();
+            ->paginate(5);
 
         $schedules = Schedule::query()->orderBy('StartTime', 'asc')->get();
         $consultants = Consultant::all();

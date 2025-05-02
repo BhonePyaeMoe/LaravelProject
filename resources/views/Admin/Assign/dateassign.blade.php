@@ -70,6 +70,21 @@
                        
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $workdates->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $workdates->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $workdates->lastPage(); $i++)
+                            <li class="{{ $workdates->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $workdates->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $workdates->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $workdates->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <h1 class="update_topic">Assign WorkDate</h1>

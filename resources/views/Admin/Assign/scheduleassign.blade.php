@@ -64,6 +64,21 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $workschedules->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $workschedules->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $workschedules->lastPage(); $i++)
+                            <li class="{{ $workschedules->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $workschedules->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $workschedules->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $workschedules->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <h1 class="update_topic">Assign WorkSchedule</h1>
