@@ -14,12 +14,13 @@ class ScheduleAssignController extends Controller
         $search = $request->input('search');
         $workschedules = WorkSchedules::with(['Consultant', 'Schedule'])
             ->when($search, function ($query, $search) {
-            return $query->whereHas('Consultant', function ($q) use ($search) {
-                $q->where('Consultant_Name', 'like', "%{$search}%");
-            });
-            })->get();
+                return $query->whereHas('Consultant', function ($q) use ($search) {
+                    $q->where('Consultant_Name', 'like', "%{$search}%");
+                });
+            })
+            ->get();
 
-        $schedules = Schedule::all();
+        $schedules = Schedule::query()->orderBy('StartTime', 'asc')->get();
         $consultants = Consultant::all();
 
         return view('Admin.Assign.scheduleassign', compact('schedules', 'consultants', 'workschedules'));

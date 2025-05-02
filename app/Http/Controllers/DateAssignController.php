@@ -18,10 +18,17 @@ class DateAssignController extends Controller
                 return $query->whereHas('Consultant', function ($q) use ($search) {
                     $q->where('Consultant_Name', 'like', "%{$search}%");
                 });
-            })->get();
+            })
+            ->get();
 
-        $dates = Date::all();
-        $consultants = Consultant::all();
+        $workdates = $workdates->sortBy(function($workdate) {
+            return $workdate->date->Date;
+        });
+
+        $dates = Date::where('Date', '>=', now()->format('Y-m-d'))
+            ->orderBy('Date')
+            ->get();
+        $consultants = Consultant::orderBy('Consultant_Name')->get();
 
         return view('Admin.Assign.dateassign', compact('dates', 'consultants', 'workdates'));
     }
@@ -82,7 +89,7 @@ class DateAssignController extends Controller
             'Date_ID' => $request->Date_ID,
         ]);
 
-        return redirect()->route('dateassign')->with('success', $workDate);
+        return redirect()->route('dateassign')->with('success', 'Date updated successfully.');
     }
 
     public function destroy($id)
@@ -90,6 +97,6 @@ class DateAssignController extends Controller
         $workDate = WorkDates::findOrFail($id);
         $workDate->delete();
 
-        return redirect()->route('dateassign')->with('success', 'Date unassigned successfully.');
+        return redirect()->route('dateassign')->with('success', 'Date deleted successfully.');
     }
 }

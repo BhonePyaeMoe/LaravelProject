@@ -10,7 +10,7 @@ class CountryController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $countries = Country::where('Country_Name', 'like', "%{$search}%")->get();
+        $countries = Country::where('Country_Name', 'like', "%{$search}%")->orderBy('Country_Name')->get();
         return view('Admin.Country.countrymanagement', compact('countries'));
     }
 

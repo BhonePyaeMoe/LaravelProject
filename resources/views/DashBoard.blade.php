@@ -16,20 +16,8 @@
     <div class="container">
         <div class="main">
             <div class="topbar">
-                <div class="dashboard">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <span onclick="showadminnav"> <i class="fa-solid fa-bars"></i> </span>
 
-                <div class="searchbar">
-
-                    <div class="search">
-                        <input type="text" placeholder="Search here...">
-                        <button><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </div>
-
-                </div>
             </div>
 
             <div class="main_content">

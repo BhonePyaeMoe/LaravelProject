@@ -14,7 +14,7 @@ class ConsultantController extends Controller
         $search = $request->input('search');
         $consultants = Consultant::when($search, function ($query, $search) {
             return $query->where('Consultant_Name', 'like', "%{$search}%");
-        })->get();
+        })->orderBy('Experience')->get();
 
         return view('Admin.Consultant.consultantmanagement', compact('consultants'));
     }

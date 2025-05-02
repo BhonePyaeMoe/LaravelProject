@@ -59,9 +59,14 @@
                                 <td>{{ $appointment->AppointmentDate}}</td>
                                 <td>{{ $appointment->Appointment_StartTime}}</td>
                                 <td>{{ $appointment->Appointment_EndTime}}</td>
-                                <td> {{ $appointment->Status }}</td>
                                 <td>
-                                    <a href="{{ route('appointment.edit', $appointment->Appointment_ID) }}" class="btn btn-primary">Update</a>
+                                    @if(\Carbon\Carbon::parse($appointment->AppointmentDate) < \Carbon\Carbon::today())
+                                        <i class="fa-solid fa-triangle-exclamation" style="color: red"></i> Expired
+                                    @else
+                                    {{ $appointment->Status }}
+                                    @endif
+                                </td>
+                                <td>
                                     <form action="{{ route('appointment.destroy', $appointment->Appointment_ID) }}" method="POST" style="display:inline-block;">
                                         @csrf
                                         @method('DELETE')

@@ -19,8 +19,12 @@ class CountryAssignController extends Controller
                 });
             })->get();
 
-        $countries = Country::all();
-        $consultants = Consultant::all();
+            $consultingCountries = $consultingCountries->sortBy(function($consultingCountry) {
+                return $consultingCountry->consultant->Consultant_Name;
+            });
+
+            $countries = Country::orderBy('Country_Name')->get();
+            $consultants = Consultant::orderBy('Consultant_Name')->get();
 
         return view('Admin.Assign.countryassign', compact('countries', 'consultants', 'consultingCountries'));
     }

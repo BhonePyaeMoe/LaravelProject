@@ -11,8 +11,8 @@ class UniversityController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $universities = University::where('University_Name', 'like', "%{$search}%")->get();
-        $countries = Country::all();
+        $universities = University::where('University_Name', 'like', "%{$search}%")->orderBy('University_Name')->get();
+        $countries = Country::OrderBy('Country_Name')->get();
         return view('Admin.University.universitymanagement', compact('universities', 'countries'));
     }
     

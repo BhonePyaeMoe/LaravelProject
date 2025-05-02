@@ -50,7 +50,12 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $workdate->consultant->Consultant_Name }}</td>
-                            <td>{{ $workdate->date->Date }}</td>
+                            <td> 
+                                @if(\Carbon\Carbon::parse($workdate->date->Date) < \Carbon\Carbon::today())
+                                    <i class="fa-solid fa-triangle-exclamation" style="color: red"></i>
+                                @endif
+                                {{ $workdate->date->Date }}
+                            </td>
                             <td>{{ $workdate->date->Day }}</td>
                             <td class="action">
                                 <a href="{{ route('dateassign.edit', $workdate->WorkDate_ID) }}" class="btn btn-primary">Update</a>

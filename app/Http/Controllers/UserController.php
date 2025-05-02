@@ -21,6 +21,15 @@ class UserController extends Controller
             return $user;
         });
 
+        $users = $users->sortBy(function($user) {
+            $order = [
+                'Super Admin' => 0,
+                'Admin' => 1,
+                'User' => 2
+            ];
+            return $order[$user->TypeName];
+        });
+
         return view('Admin.User.Usermanagement', compact('users'));
     }
 

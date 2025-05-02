@@ -13,7 +13,7 @@ class DateController extends Controller
         $dates = Date::when($search, function ($query, $search) {
             return $query->where('Date', 'like', "%{$search}%")
                  ->orWhere('Day', 'like', "%{$search}%");
-        })->get();
+        })->orderBy('Date')->get();
 
         return view('Admin.Date.datemanagement', compact('dates'));
     }
