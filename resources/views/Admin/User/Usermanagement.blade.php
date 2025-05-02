@@ -66,7 +66,7 @@
             </div>
 
             <div class="add-user">
-                <h2>Add New Web Administrator</h2>
+                <h2>Add New Website Admin</h2>
                 <form action="{{ route('user.store') }}" method="POST">
                     @csrf
                     <input type="text" name="User_Name" placeholder="Username" required>
