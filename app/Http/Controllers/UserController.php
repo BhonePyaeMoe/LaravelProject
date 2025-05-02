@@ -75,7 +75,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->TypeName = UserType::find($user->Type_ID)->TypeName;
     
-        return view('Admin.user.updateuser', compact('user'));
+        return view('Admin.User.updateuser', compact('user'));
     }
 
     public function update(Request $request, $id)
