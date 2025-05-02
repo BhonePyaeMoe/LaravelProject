@@ -72,7 +72,7 @@
                     <input type="text" name="User_Name" placeholder="Username" required>
                     <input type="email" name="User_Email" placeholder="Email Address" required>
                     <input type="password" name="User_Password" placeholder="Password" required>
-                    <input type="number" name="User_Age" placeholder="Age" required>
+                    <input type="number" name="User_Age" placeholder="Age">
                     <input type="text" name="User_Phone" placeholder="Phonenumber"  required>
                     <input type="text" placeholder="Admin" value="Admin" readonly>
                     <input type="hidden" name="Type_ID" value="2">

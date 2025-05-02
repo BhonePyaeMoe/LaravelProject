@@ -61,10 +61,10 @@ Route::post('/dateassign/update/{id}', [DateAssignController::class, 'update'])-
 Route::delete('/dateassign/delete/{id}', [DateAssignController::class, 'destroy'])->name('dateassign.destroy');
 
 Route::get('/usermanagement', [UserController::class, 'index'])->name('usermanagement');
-Route::post('/usermanagement/store', [UserController::class, 'store'])->name('user.store');
-Route::get('/usermanagement/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-Route::post('/usermanagement/update/{id}', [UserController::class, 'update'])->name('user.update');
-Route::delete('/usermanagement/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+Route::delete('/user/delete/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 Route::get('/countrymanagement', [CountryController::class, 'index'])->name('countrymanagement');
 Route::post('/country/store', [CountryController::class, 'store'])->name('country.store');

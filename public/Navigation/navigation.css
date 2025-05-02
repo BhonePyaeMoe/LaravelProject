@@ -245,6 +245,9 @@
 .close_mobile {
     cursor: pointer;
 }
+.mobile_admin {
+    display: none;
+}
 
 @media screen and (max-width: 1200px) {
     .desktop {
@@ -266,7 +269,6 @@
         margin-left: 0px;
     }
     .mobile_admin {
-        display: none;
         position: absolute;
         width: 100%;
     }
