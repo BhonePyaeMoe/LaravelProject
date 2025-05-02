@@ -60,6 +60,22 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $universities->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $universities->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $universities->lastPage(); $i++)
+                            <li class="{{ $universities->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $universities->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $universities->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $universities->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="add-user">

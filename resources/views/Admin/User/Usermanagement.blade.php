@@ -1,4 +1,3 @@
-<!-- filepath: /c:/xampp/htdocs/Consultancy/resources/views/Admin/User/Usermanagement.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,6 +62,22 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $users->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $users->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $users->lastPage(); $i++)
+                            <li class="{{ $users->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $users->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $users->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $users->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="add-user">

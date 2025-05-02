@@ -13,11 +13,7 @@ class ScheduleController extends Controller
         $schedules = Schedule::when($search, function ($query, $search) {
             return $query->where('StartTime', 'like', "%{$search}%")
                  ->orWhere('EndTime', 'like', "%{$search}%");
-        })->orderBy('StartTime')->get();
-
-        $schedules = $schedules->sortBy(function($schedule) {
-            return $schedule->StartTime;
-        });
+        })->orderBy('StartTime')->paginate(5);
 
         return view('Admin.Schedule.schedulemanagement', compact('schedules'));
     }

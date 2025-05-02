@@ -15,13 +15,14 @@ class UserController extends Controller
         $search = $request->input('search');
         $users = User::when($search, function ($query, $search) {
             return $query->where('User_Name', 'like', "%{$search}%");
-        })->get();
+        })->paginate(5);
+
         $users->map(function ($user) {
             $user->TypeName = UserType::find($user->Type_ID)->TypeName;
             return $user;
         });
 
-        $users = $users->sortBy(function($user) {
+        $sortedUsers = $users->getCollection()->sortBy(function($user) {
             $order = [
                 'Super Admin' => 0,
                 'Admin' => 1,
@@ -29,6 +30,8 @@ class UserController extends Controller
             ];
             return $order[$user->TypeName];
         });
+
+        $users->setCollection($sortedUsers);
 
         return view('Admin.User.Usermanagement', compact('users'));
     }

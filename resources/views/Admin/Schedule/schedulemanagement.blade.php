@@ -71,6 +71,22 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $schedules->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $schedules->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $schedules->lastPage(); $i++)
+                            <li class="{{ $schedules->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $schedules->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $schedules->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $schedules->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="add-user">

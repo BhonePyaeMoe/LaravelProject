@@ -297,6 +297,42 @@ option {
     padding: 30px 100px;
 }
 
+/* Pagination styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+.pagination ul {
+    display: flex;
+    color: #007bff; /* Adding a blue color to the text */
+}
+.pagination ul li {
+    list-style: none;
+    margin: 5px;
+}
+.pagination ul li a {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    transition: background-color 0.3s, color 0.3s;
+}
+.pagination ul li a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+.pagination ul li.active a {
+    background-color: #007bff;
+    color: #fff;
+    pointer-events: none;
+}
+.pagination ul li.disabled a {
+    color: #ccc;
+    pointer-events: none;
+}
+/* Pagination styles */
+
 @media screen and (max-width: 768px) {
     .user_search {
         padding: 15px;

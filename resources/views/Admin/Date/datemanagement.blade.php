@@ -57,7 +57,7 @@
                         @endif
                         @foreach($dates as $date)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration + ($dates->currentPage() - 1) * $dates->perPage() }}</td>
                                 <td>{{ $date->Date }}</td>
                                 <td>{{ $date->Day }}</td>
                                 <td class="actiontd">
@@ -72,6 +72,23 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li class="{{ $dates->onFirstPage() ? 'disabled' : '' }}">
+                            <a href="{{ $dates->previousPageUrl() }}" class="prev"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        @for($i = 1; $i <= $dates->lastPage(); $i++)
+                            <li class="{{ $dates->currentPage() == $i ? 'active' : '' }}">
+                                <a href="{{ $dates->url($i) }}">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="{{ $dates->hasMorePages() ? '' : 'disabled' }}">
+                            <a href="{{ $dates->nextPageUrl() }}" class="next"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
 
             <div class="add-user">
