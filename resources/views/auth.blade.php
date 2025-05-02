@@ -87,7 +87,7 @@
         </div>
     </div>
 
-    @include('mobileauth')
+    @include('mobileauth') /* Include the mobileauth view */
 
     <script src="{{ asset('Auth/auth.js') }}"></script>
 </body>
