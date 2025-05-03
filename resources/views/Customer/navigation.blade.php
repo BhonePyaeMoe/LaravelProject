@@ -45,7 +45,7 @@
         <ul>
             <li><a href="{{ route('home') }}">Home</a></li>
             <li><a href="{{ route('about') }}">About</a></li>
-            <li><a href="{{ route('services') }}">Services</a></li>
+            <li><a href="{{ route('chooseconsultant') }}">Services</a></li>
             <li><a href="{{ route('history', !empty(session('data.User_ID')) ? session('data.User_ID') : 'empty') }}">History</a></li>
             <li><a href="{{ route('login') }}">Login</a></li>
         </ul>

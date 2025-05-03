@@ -47,6 +47,108 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
+/*  Choose Consultant    */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+.choose-main {
+    gap: 40px;
+    margin: 50px 100px;
+    background-color: white;
+}
+
+.choose-main h1 {
+    padding-top: 40px;
+    text-align: center;
+}
+
+.chooseconsultant {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 40px;
+}
+
+.consultant-card {
+    flex: 0 1 375px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.consultant-card img {
+    width: 100%;
+    height: 350px;
+}
+
+.consultant-card p {
+    margin: 5px 0;
+}
+
+.consultant-card a {
+    display: inline-block;
+    margin-top: auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+}
+
+.consultant-info {
+    width: 100%;
+    height: 300px;
+    box-sizing: border-box;
+    text-align: start;
+}
+
+.info-all {
+    display: flex;
+    height: 300px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.info-all a {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+.countries_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style-type: circle;
+    min-height: 70px;
+}
+
+.top-info {
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+@media screen and (max-width: 1100px) {
+    .chooseconsultant {
+        margin: 20px;
+    }
+
+    .topic-choosec {
+        margin: 40px 20px 20px 20px;
+        width: calc(100% - 40px);
+    }
+}
+
+/*  Choose Consultant    */
+
 /* For Appointment */
 body {
     font-family: Arial, sans-serif;
