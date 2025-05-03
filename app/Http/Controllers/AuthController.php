@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Date;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -63,6 +64,24 @@ class AuthController extends Controller
                             return [$item->day_month => $item->count];
                         });
 
+                    $countDate = Date::where('Date', '<', now()->format('Y-m-d'))->count();
+                    $totalappointment = Appointment::count();
+                    $todayappointment = Appointment::where('AppointmentDate', now()->format('Y-m-d'))->count();
+                    $totaluser = User::count();
+                    $expierdappointment = Appointment::where('AppointmentDate', '<', now()->format('Y-m-d'))->count();
+
+                    $currentMonthUsers = User::whereMonth('created_at', now()->month)
+                        ->whereYear('created_at', now()->year)
+                        ->count();
+
+                    $lastMonthUsers = User::whereMonth('created_at', now()->subMonth()->month)
+                        ->whereYear('created_at', now()->subMonth()->year)
+                        ->count();
+
+                    $progress = $lastMonthUsers > 0 
+                        ? (($currentMonthUsers - $lastMonthUsers) / $lastMonthUsers) * 100 
+                        : ($currentMonthUsers > 0 ? 100 : 0);
+
                     $allDays = collect();
                     for ($i = 0; $i <= 7; $i++) {
                         $date = now()->addDays($i);
@@ -73,6 +92,12 @@ class AuthController extends Controller
                         session([
                             'groupedUsers' => $groupedUsers,
                             'groupedAppointments' => $allDays,
+                            'countDate' => $countDate,
+                            'totalappointment' => $totalappointment,
+                            'todayappointment' => $todayappointment,
+                            'totaluser' => $totaluser,
+                            'expiredappointment' => $expierdappointment,
+                            'progress' => $progress
                         ]);
 
                     return redirect()->route('dashboard')->with('success', 'Admin Login successful.');

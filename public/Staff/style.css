@@ -333,7 +333,14 @@ option {
 }
 /* Pagination styles */
 
-@media screen and (max-width: 768px) {
+.actiontd {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+@media screen and (max-width: 1100px) {
     .user_search {
         padding: 15px;
         display: flex;
@@ -349,7 +356,8 @@ option {
     }
     .table_display {
         overflow-x: auto;
-        padding: 20px;
+        padding: 20px 20px 60px 20px;
+        position: relative;
     }
     .add-user {
         margin: 0px;

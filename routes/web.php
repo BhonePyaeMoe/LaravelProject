@@ -103,8 +103,6 @@ Route::post('/countryassign/update/{id}', [CountryAssignController::class, 'upda
 Route::delete('/countryassign/delete/{id}', [CountryAssignController::class, 'destroy'])->name('countryassign.destroy');
 
 Route::get('/appointmentmanagement', [AppointmentController::class, 'index'])->name('appointmentmanagement');
-Route::get('/appointment/edit/{id}', [AppointmentController::class, 'edit'])->name('appointment.edit');
-Route::post('/appointment/update/{id}', [AppointmentController::class, 'update'])->name('appointment.update');
 Route::delete('/appointment/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
 
 

@@ -247,6 +247,7 @@
 }
 .mobile_admin {
     display: none;
+    z-index: 2000;
 }
 
 @media screen and (max-width: 1200px) {
@@ -261,7 +262,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1100px) {
     .sidebar {
         width: 0px;
     }
@@ -269,10 +270,10 @@
         margin-left: 0px;
     }
     .mobile_admin {
-        position: absolute;
+        position: fixed;
         width: 100%;
     }
-    admin_menu {
-        align-items: center;
+    .admin_menu {
+        text-align: center;
     }
 }
