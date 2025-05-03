@@ -61,8 +61,7 @@
             margin-left: auto;
         }
 
-        .contact-us
-        {
+        .contact-us {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -78,16 +77,20 @@
         }
 
         @media screen and (max-width: 1100px) {
-        .about-main
-        {
-            padding: 60px 30px 0px 30px;
-        }
-        .about-us-intro,
-        .our-mission
-        {
-            flex-direction: column;
-            padding-bottom: 100px;
-        }
+            .about-main {
+                padding: 60px 30px 0px 30px;
+            }
+
+            .about-us-intro,
+            .our-mission {
+                flex-direction: column;
+                padding-bottom: 100px;
+            }
+
+            .second-about-page img {
+                width: 100%;
+                height: auto;
+            }
         }
     </style>
 
@@ -171,7 +174,7 @@
 
                     <p>Let's get in touch with NovaBright for expert guidance on your education
                         journey</p>
-                    <p>Address:  Sanchaung Tower, Pyay Rooad, Yangon, Myanmar </p>
+                    <p>Address: Sanchaung Tower, Pyay Rooad, Yangon, Myanmar </p>
                     <p> Phone: +959 635 459 218</p>
                     <p>Email: <a>info@novabright.com</a></p>
 

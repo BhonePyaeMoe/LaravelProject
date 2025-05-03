@@ -90,18 +90,18 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            ..appoint-container table {
+            .appoint-container table {
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
             }
 
-            th, td {
+            .appoint-container th, .appoint-container td {
                 font-size: 14px;
                 padding: 8px;
             }
 
-            h1 {
+            .appoint-container h1 {
                 font-size: 20px;
             }
 
@@ -112,13 +112,8 @@
         }
 
         @media (max-width: 480px) {
-            h1 {
+            .appoint-container h1 {
                 font-size: 18px;
-            }
-
-            th, td {
-                font-size: 12px;
-                padding: 6px;
             }
 
             .cancel-button {
@@ -137,7 +132,7 @@
     <div class="appoint-container">
         <h1>
             <a href=" {{ route('home') }}" style="text-decoration: none; color: #0b70fe; margin-right: 20px;"> 
-                <i class="fa-solid fa-house" style="font-size: 25px;"></i>
+                <i class="fa-solid fa-arrow-left" style="font-size: 20px;"></i>
             </a>
             Appointment History
         </h1>
