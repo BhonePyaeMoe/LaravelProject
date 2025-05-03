@@ -149,6 +149,14 @@ body {
         margin: 40px 20px 20px 20px;
         width: calc(100% - 40px);
     }
+    .consultant-card {
+        flex: 1 1 45%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .consultant-card {
+        flex: 1 1 100%;
+    }
 }
 
 /*  Choose Consultant    */
