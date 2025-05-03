@@ -43,6 +43,12 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        @if($users->isEmpty())
+                            <tr>
+                                <td colspan="3" style="text-align: center;">No users found.</td>
+                            </tr>
+                        @endif
                         @foreach($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>

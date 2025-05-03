@@ -66,6 +66,12 @@
     background-color: #333;
     transition: all 0.3s;
 }
+
+.menu:hover,
+.menu_active:hover {
+    background-color: transparent;
+}
+
 .Login_btn {
     color: #0b70fe;
     padding: 10px 20px;

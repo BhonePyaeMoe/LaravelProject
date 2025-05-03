@@ -340,6 +340,15 @@ table td button:hover {
     text-decoration: none;
 }
 
+.go-back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.go-back h1 {
+    padding: 30px;
+}
+
 .add-user {
     position: relative;
     margin: 0px 100px 40px 100px;
@@ -460,8 +469,11 @@ option {
     }
     .table_display {
         overflow-x: auto;
+        min-height: 500px;
         padding: 20px 20px 60px 20px;
-        position: relative;
+    }
+    .table_display::-webkit-scrollbar {
+        display: none;
     }
     .add-user {
         margin: 0px;

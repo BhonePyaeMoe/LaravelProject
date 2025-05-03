@@ -141,6 +141,10 @@ body {
         margin: 20px;
     }
 
+    .choose-main {
+        margin: 50px 20px;
+    }
+
     .topic-choosec {
         margin: 40px 20px 20px 20px;
         width: calc(100% - 40px);

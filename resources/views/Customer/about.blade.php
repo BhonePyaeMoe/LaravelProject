@@ -76,6 +76,19 @@
             cursor: pointer;
             font-size: 30px;
         }
+
+        @media screen and (max-width: 1100px) {
+        .about-main
+        {
+            padding: 60px 30px 0px 30px;
+        }
+        .about-us-intro,
+        .our-mission
+        {
+            flex-direction: column;
+            padding-bottom: 100px;
+        }
+        }
     </style>
 
     @include('errorhandling')

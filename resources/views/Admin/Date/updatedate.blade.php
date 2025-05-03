@@ -18,7 +18,10 @@
     <div class="container">
         <div class="main">
 
-            <h1 class="update_topic">Update Date</h1>
+            <div class="go-back">
+                <a href="{{ route('datemanagement') }}"> <i class="fa fa-solid fa-arrow-left"></i></a>
+                <h1 class="update_topic">Update Date</h1>
+            </div>
             
             <div class="add-user">
                 <form action="{{ route('date.update', $date->Date_ID) }}" method="POST">

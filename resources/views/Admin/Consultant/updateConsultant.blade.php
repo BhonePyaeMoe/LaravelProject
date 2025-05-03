@@ -17,9 +17,10 @@
     <div class="container">
         <div class="main">
 
-            
-
-            <h1 class="update_topic">Update Consultant</h1>
+            <div class="go-back">
+                <a href="{{ route('consultantmanagement') }}"> <i class="fa fa-solid fa-arrow-left"></i></a>
+                <h1 class="update_topic">Update Consultant</h1>
+            </div>
             
             <div class="add-user">
                 <form action="{{ route('consultant.update', $consultant->Consultant_ID) }}" method="POST" enctype="multipart/form-data">

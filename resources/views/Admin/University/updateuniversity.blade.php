@@ -18,7 +18,10 @@
     <div class="container">
         <div class="main">
 
-            <h1 class="update_topic">Update User</h1>
+            <div class="go-back">
+                <a href="{{ route('universitymanagement') }}"> <i class="fa fa-solid fa-arrow-left"></i></a>
+                <h1 class="update_topic">Update University</h1>
+            </div>
             
             <div class="add-user">
                 <form action="{{ route('university.update', $university->University_ID) }}" method="POST">

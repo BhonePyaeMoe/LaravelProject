@@ -8,48 +8,46 @@
     <link rel="shortcut icon" href="{{ asset('Images/Web_logo.jpg') }}" type="image/x-icon">
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
         }
 
-        .container {
+        .appoint-container {
             background: #fff;
+            margin: 50px;
             min-height: calc(100vh - 131px);
-            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+        .appoint-container h1 {
+            font-weight: 300;
+            color: #0b70fe;
+            padding: 50px 50px 50px 30px;
         }
 
-        table {
+        .appoint-container table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
 
-        th, td {
+        .appoint-container th,
+        .appoint-container td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 20px 10px;
             text-align: center;
+            border-left: none;
+            border-right: none;
         }
 
-        th {
-            background-color: #007bff;
-            color: white;
+        .appoint-container th{
+            letter-spacing: 1px;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
+        .appoint-container tr:hover {
             background-color: #f1f1f1;
         }
 
@@ -74,16 +72,13 @@
             padding: 5px 10px;
             border-radius: 4px;
         }    
-            
 
         .status-cancelled {
             color: red;
-            font-weight: bold;
         }
 
         .status-active {
             color: rgb(0, 255, 0);
-            font-weight: bold;
         }
 
         footer {
@@ -95,7 +90,7 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            table {
+            ..appoint-container table {
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
@@ -139,20 +134,25 @@
     @include('Customer.navigation')
     @include('errorhandling')
 
-    <div class="container">
-        <h1>Appointment History</h1>
+    <div class="appoint-container">
+        <h1>
+            <a href=" {{ route('home') }}" style="text-decoration: none; color: #0b70fe; margin-right: 20px;"> 
+                <i class="fa-solid fa-house" style="font-size: 25px;"></i>
+            </a>
+            Appointment History
+        </h1>
 
         <table>
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Consultant Name</th>
-                    <th>Date</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
-                    <th>Topic</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>NO</th>
+                    <th>CONSULTANT NAME</th>
+                    <th>DATE</th>
+                    <th>START-TIME</th>
+                    <th>END-TIME</th>
+                    <th>TOPIC</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
