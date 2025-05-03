@@ -53,6 +53,6 @@
 
 
 
-    <script src="{{ asset('Navigation/navigation.js') }}"></script>
+    <script src="{{ asset('Navigation/Navigation.js') }}"></script>
 </body>
 </html>
