@@ -36,9 +36,9 @@ Route::get('/login', function () {
     return view('auth');
 })->name('login');
 
-Route::get('/forgotpassword', function () {
-    return view('forgotpassword');
-})->name('forgotpassword');
+Route::get('/privacy', function () {
+    return view('Customer/privacy');
+})->name('privacy');
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/login/post', [AuthController::class, 'checkUser'])->name('login.post');

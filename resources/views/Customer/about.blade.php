@@ -6,93 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaBright</title>
     <link rel="shortcut icon" href="{{ asset('Images/Web_logo.jpg') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('About/style.css') }}">
 </head>
 
 <body>
-
-    <style>
-        .about-main {
-            padding: 60px 170px 0px 170px;
-            background-color: #f4f4f9;
-        }
-
-        .about-us-intro,
-        .our-mission {
-            padding-bottom: 150px;
-            display: flex;
-            flex-direction: row;
-            gap: 100px;
-        }
-
-        .our-mission {
-            flex-direction: row-reverse;
-        }
-
-        .our-mission>.second-about-page>img {
-            margin-left: 0;
-            margin-right: auto;
-        }
-
-        .first-about-page,
-        .second-about-page {
-            flex: 1 1 45%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .first-about-page h2 {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 40px;
-            font-weight: 300;
-            letter-spacing: 3px;
-            padding-bottom: 40px;
-        }
-
-        .first-about-page p {
-            font-size: 20px;
-            line-height: 30px;
-        }
-
-        .second-about-page img {
-            width: 500px;
-            height: 320px;
-            margin-left: auto;
-        }
-
-        .contact-us {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .icon-contact {
-            padding-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            cursor: pointer;
-            font-size: 30px;
-        }
-
-        @media screen and (max-width: 1100px) {
-            .about-main {
-                padding: 60px 30px 0px 30px;
-            }
-
-            .about-us-intro,
-            .our-mission {
-                flex-direction: column;
-                padding-bottom: 100px;
-            }
-
-            .second-about-page img {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
 
     @include('errorhandling')
     @include('Customer.navigation')
@@ -202,7 +118,7 @@
 
     </div>
 
-
+    @include('Customer.footer')
 
 </body>
 

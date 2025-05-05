@@ -57,10 +57,7 @@
         </div>
     </div>
 
-
-
-
-
+    @include('Customer.footer')
 
 </body>
 

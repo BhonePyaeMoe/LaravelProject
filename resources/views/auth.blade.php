@@ -37,9 +37,6 @@
                         <label for="password">Password:</label>
                         <input type="password" id="password" name="password" class="form-control" required>
                     </div>
-                    <div class="form-check">
-                        <a href="{{ route('forgotpassword') }}"> Forget Password</a>
-                    </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>

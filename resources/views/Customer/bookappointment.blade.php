@@ -21,50 +21,56 @@
     @include('errorhandling')
     @include('Customer.navigation')
 
-    <div class="container">
+    <div class="make-appointment">
+        <div class="c-container">
 
-        <h1>Book Appointment</h1>
+            <h1>Book Appointment</h1>
 
-        <p>{{ $check }}</p>
+            <p>{{ $check }}</p>
 
-        <a href="{{ route('choosedatetime', $consultants->Consultant_ID) }}">Go Back</a>
+            <a href="{{ route('choosedatetime', $consultants->Consultant_ID) }}">Go Back</a>
 
-        <form action="{{ route('bookappointment.store') }}" method="POST">
-            @csrf
+            <form action="{{ route('bookappointment.store') }}" method="POST">
+                @csrf
 
-            <input type="hidden" name="user_id" value="{{ session('data.User_ID') }}">
-            <input type="hidden" name="consultant_id" value="{{ $consultants->Consultant_ID }}">
-            <input type="hidden" name="status" value="Active">
+                <input type="hidden" name="user_id" value="{{ session('data.User_ID') }}">
+                <input type="hidden" name="consultant_id" value="{{ $consultants->Consultant_ID }}">
+                <input type="hidden" name="status" value="Active">
 
-            <label for="user_name">User Name</label>
-            <input type="text" id="user_name" name="user_name" value="{{ session('data.User_Name') }}" readonly>
+                <label for="user_name">User Name</label>
+                <input type="text" id="user_name" name="user_name" value="{{ session('data.User_Name') }}" readonly>
 
-            <label for="consultant_name">Consultant Name</label>
-            <input type="text" id="consultant_name" name="consultant_name"
-                value="{{ $consultants->Consultant_Name }}" readonly>
+                <label for="consultant_name">Consultant Name</label>
+                <input type="text" id="consultant_name" name="consultant_name"
+                    value="{{ $consultants->Consultant_Name }}" readonly>
 
-            <label for="appointment_date">Appointment Date</label>
-            <input type="text" id="appointment_date" name="appointment_date" value="{{ $dates->Date }}" required>
+                <label for="appointment_date">Appointment Date</label>
+                <input type="text" id="appointment_date" name="appointment_date" value="{{ $dates->Date }}"
+                    required>
 
-            <input type="hidden" name="appointment_starttime" value="{{ $schedules->StartTime }}">
-            <input type="hidden" name="appointment_endtime" value="{{ $schedules->EndTime }}">
+                <input type="hidden" name="appointment_starttime" value="{{ $schedules->StartTime }}">
+                <input type="hidden" name="appointment_endtime" value="{{ $schedules->EndTime }}">
 
-            <label for="appointment_time">Appointment Time</label>
-            <input type="text" id="appointment_time" name="appointment_time"
-                value="{{ $schedules->StartTime }} - {{ $schedules->EndTime }}" readonly>
+                <label for="appointment_time">Appointment Time</label>
+                <input type="text" id="appointment_time" name="appointment_time"
+                    value="{{ $schedules->StartTime }} - {{ $schedules->EndTime }}" readonly>
 
-            <label for="topic">Topic</label>
-            <input type="text" id="topic" name="topic" value="{{ old('topic') }}" required>
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" name="topic" value="{{ old('topic') }}" required>
 
-            <label for="user_information">User Information</label>
-            <input type="text" id="user_information" name="user_information" required>
+                <label for="user_information">User Information</label>
+                <input type="text" id="user_information" name="user_information" required>
 
-            <label for="notes">Notes (Optional)</label>
-            <textarea id="notes" name="notes" rows="4" cols="50">{{ old('notes') }}</textarea>
+                <label for="notes">Notes (Optional)</label>
+                <textarea id="notes" name="notes" rows="4" cols="50">{{ old('notes') }}</textarea>
 
-            <button type="submit">Book Appointment</button>
-        </form>
+                <button type="submit">Book Appointment</button>
+            </form>
+        </div>
     </div>
+
+    @include('Customer.footer')
+
 </body>
 
 </html>

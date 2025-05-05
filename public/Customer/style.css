@@ -4,8 +4,7 @@ body {
     font-family: "Arial", sans-serif;
     margin: 0;
     padding: 0;
-    height: 1800px;
-    background-color: antiquewhite;
+    background-color: #f4f4f4;
 }
 
 .first_container {
@@ -49,11 +48,6 @@ body {
 
 /*  Choose Consultant    */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-}
 .choose-main {
     gap: 40px;
     margin: 50px 100px;
@@ -62,6 +56,8 @@ body {
 
 .choose-main h1 {
     padding-top: 40px;
+    font-size: 35px;
+    font-weight: 600;
     text-align: center;
 }
 
@@ -138,9 +134,8 @@ body {
 
 @media screen and (max-width: 1100px) {
     .chooseconsultant {
-        margin: 20px;
+        margin: 10px;
     }
-
     .choose-main {
         margin: 50px 20px;
     }
@@ -154,43 +149,45 @@ body {
     }
 }
 @media screen and (max-width: 700px) {
+    .chooseconsultant {
+        margin: 10px;
+    }
     .consultant-card {
         flex: 1 1 100%;
+    }
+    .consultant-card img {
+        width: 100%;
+        height: 300px;
     }
 }
 
 /*  Choose Consultant    */
 
 /* For Appointment */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-}
-
-.container {
-    max-width: 600px;
+.c-container {
+    display: block;
+    max-width: 900px;
     margin: 50px auto;
     background: #fff;
-    padding: 20px;
+    padding: 70px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.container h1 {
+.c-container h1 {
+    font-size: 30px;
     text-align: center;
     color: #333;
 }
 
-form label {
+.c-container form label {
     display: block;
     margin: 10px 0 5px;
     font-weight: bold;
 }
 
-input[type="text"],
-textarea {
+.c-container input[type="text"],
+.c-container textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -198,10 +195,11 @@ textarea {
     border-radius: 4px;
 }
 
-form button {
+.c-container form button {
+    margin-top: 10px;
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 17px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -210,11 +208,11 @@ form button {
     cursor: pointer;
 }
 
-button:hover {
+.c-container button:hover {
     background-color: #0056b3;
 }
 
-.container a {
+.c-container a {
     display: block;
     text-align: center;
     margin: 15px 0;
@@ -222,7 +220,7 @@ button:hover {
     text-decoration: none;
 }
 
-.container a:hover {
+.c-container a:hover {
     text-decoration: underline;
 }
 /* For Appointment */
@@ -248,7 +246,7 @@ button:hover {
 }
 
 /* Adjustments for mobile view */
-@media (max-width: 500px) {
+@media (max-width: 1100px) {
     .Home_text h1 {
         font-size: 17px;
         margin-bottom: 15px;
@@ -256,5 +254,214 @@ button:hover {
 
     .Home_text p {
         font-size: 7px;
+    }
+}
+
+.test-topic {
+    text-align: center;
+    padding: 100px 0px 50px 0px;
+    font-size: 26px;
+    letter-spacing: 2px;
+    font-weight: normal;
+}
+.test-topic p {
+    padding-top: 5px;
+    font-size: 19px;
+}
+
+.second_container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    padding: 50px 150px 100px 150px;
+}
+
+.testimonial {
+    flex: 1 1 30%;
+    justify-content: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.test-top {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+
+.test-top img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.test-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.test-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+.test-bottom p {
+    line-height: 1.5;
+    letter-spacing: 1px;
+    font-style: italic;
+}
+.third_container {
+    background-color: white;
+    gap: 50px;
+    padding: 100px 150px;
+}
+.third-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    gap: 30px;
+}
+.third-info h1 {
+    font-size: 35px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+.third-btn {
+    padding-top: 40px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+.third-btn a {
+    text-decoration: none;
+    color: white;
+    background-color: #0b70fe;
+    padding: 18px 22px;
+    border-radius: 8px;
+}
+
+@media (max-width: 1100px) {
+    .Home_text {
+        font-size: 30px;
+    }
+    .second_container {
+        flex-direction: column;
+        padding: 50px 50px 100px 50px;
+    }
+    .third_container {
+        padding: 100px 50px;
+    }
+}
+
+/* For History */
+
+.appoint-container {
+    background: #fff;
+    margin: 50px;
+    min-height: calc(100vh - 131px);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.appoint-container h1 {
+    font-weight: 300;
+    color: #0b70fe;
+    padding: 50px 50px 50px 30px;
+}
+
+.appoint-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.appoint-container th,
+.appoint-container td {
+    border: 1px solid #ddd;
+    padding: 20px 10px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+}
+
+.appoint-container th {
+    letter-spacing: 1px;
+}
+
+.appoint-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+.cancel-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: darkred;
+}
+
+.cancel-disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #333;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.status-cancelled {
+    color: red;
+}
+
+.status-active {
+    color: rgb(0, 255, 0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .appoint-container table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .appoint-container th,
+    .appoint-container td {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .appoint-container h1 {
+        font-size: 20px;
+    }
+
+    .cancel-button {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .appoint-container h1 {
+        font-size: 18px;
+    }
+
+    .cancel-button {
+        padding: 4px 6px;
+        font-size: 10px;
     }
 }

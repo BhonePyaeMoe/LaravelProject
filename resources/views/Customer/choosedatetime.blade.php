@@ -251,6 +251,8 @@
             </div>
         </div>
     </div>
+
+    @include('Customer.footer')
     
 </body>
 </html>
